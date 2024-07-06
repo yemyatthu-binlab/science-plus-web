@@ -1,0 +1,16 @@
+<svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1ngcqk8"
+  xmlns="http://www.w3.org/2000/svg">
+  <g clip-path=":r0:">
+    <path d="M15.2715 6.40039L15.2715 27.2004" stroke="#ABBDFF" stroke-width="1.06667"></path>
+    <path d="M25.4043 6.15625L25.4043 27.2702" stroke="#ABBDFF" stroke-width="1.06667"></path>
+    <path d="M25.9395 17.0664L5.13945 17.0664" stroke="#ABBDFF" stroke-width="1.06667"></path>
+    <path d="M26.2227 6.93359L5.10866 6.93359" stroke="#ABBDFF" stroke-width="1.06667"></path>
+    <path d="M5.13867 6.40039V27.7337H25.9387" stroke="black" stroke-width="2.13333"></path>
+    <circle cx="25.3849" cy="6.92107" r="5.049" fill="#456DFF"></circle>
+  </g>
+  <defs>
+    <clipPath id=":r0:">
+      <rect width="27.744" height="27.2" fill="white" transform="translate(3.73242 1.59961)"></rect>
+    </clipPath>
+  </defs>
+</svg>

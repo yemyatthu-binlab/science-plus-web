@@ -1,0 +1,17 @@
+<svg width="288" height="216" overflow="visible" touch-action="none" style="z-index: 1;">
+  <g>
+    <g class="diagrammarRoot" style="-webkit-user-select: none;" touch-action="none">
+      <polygon fill="rgba(0%,0%,0%,0)" stroke="rgba(0%,0%,0%,0)" stroke-width="2"
+        stroke-linecap="butt" stroke-linejoin="miter" stroke-dasharray=""
+        vector-effect="non-scaling-stroke" transform="matrix(1 0 0 -1 144 108)"
+        points="-144, -108 144, -108 144, 108 -144, 108 "></polygon>
+      <g opacity="1">
+        <g vector-effect="non-scaling-stroke" transform="matrix(72 0 0 -72 144 108)">
+          <image width="1" height="1"
+            href="https://ds055uzetaobb.cloudfront.net/brioche/uploads/lessons/fail-state-modal-drivr-g9Ub4x.png"
+            transform="scale(1 -1) translate(-0.5 -0.5)"></image>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

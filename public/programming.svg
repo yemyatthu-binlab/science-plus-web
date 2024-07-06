@@ -1,0 +1,20 @@
+<svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1ngcqk8"
+  xmlns="http://www.w3.org/2000/svg">
+  <g clip-path=":r2:">
+    <path d="M2.67773 10.1338H29.3444V27.7338H2.67773V10.1338Z" fill="#29CC57"></path>
+    <path d="M12.7535 15.0029L7.91211 18.4995L12.7535 21.996" stroke="white" stroke-width="2.13333"></path>
+    <path d="M12.0801 23.6104V13.3896L13.8284 15.6759V21.8621L12.0801 23.6104Z" fill="#29CC57"></path>
+    <path d="M19.268 15.0039L24.1094 18.5005L19.268 21.997" stroke="white" stroke-width="2.13333"></path>
+    <path d="M19.9414 23.6113V13.3906L18.1931 15.6768V21.8631L19.9414 23.6113Z" fill="#29CC57"></path>
+    <path d="M18.4102 12.7998L13.9102 24.4998" stroke="white" stroke-width="1.06667"></path>
+    <rect x="4.61133" y="17" width="2.7" height="3.6" fill="#29CC57"></rect>
+    <rect x="24.7109" y="17" width="2.7" height="3.6" fill="#29CC57"></rect>
+    <rect x="2.67773" y="4.7998" width="26.6667" height="5.33333" fill="black"></rect>
+    <rect x="4.2793" y="6.40039" width="2.13333" height="2.13333" fill="#FF5D5D"></rect>
+  </g>
+  <defs>
+    <clipPath id=":r2:">
+      <rect width="26.6667" height="22.9333" fill="white" transform="translate(2.66602 4.7998)"></rect>
+    </clipPath>
+  </defs>
+</svg>
