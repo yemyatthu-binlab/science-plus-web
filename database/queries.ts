@@ -35,3 +35,10 @@ export const getUserProgress = cache(async () => {
 
   return data;
 });
+
+export const getCourseById = cache(async (couseId: number) => {
+  const data = await db.query.courses.findFirst({
+    where: eq(courses.id, couseId),
+  });
+  return data;
+});
