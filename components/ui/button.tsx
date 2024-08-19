@@ -31,6 +31,8 @@ const buttonVariants = cva(
           "bg-transparent text-slate-500 border-tranparent hover:bg-slate-100 transition-none",
         sidebarOutline:
           "bg-green-500/15 text-green-500 border-green-200 border-2 hover:bg-green-500/20 transition-none",
+        black:
+          "bg-black text-white active:opacity-80 hover:opacity-80 rounded-3xl text-md w-full md:w-auto ",
       },
       size: {
         default: "h-11 px-4 py-2",

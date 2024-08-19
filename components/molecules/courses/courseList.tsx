@@ -19,7 +19,6 @@ export const CourseList = ({ courses, activCourseId }: props) => {
   const [pending, startTransition] = useTransition();
 
   const onClick = (id: number) => {
-    console.log("id::", id);
     if (pending) return;
     if (id === activCourseId) {
       return router.push("/learn");
