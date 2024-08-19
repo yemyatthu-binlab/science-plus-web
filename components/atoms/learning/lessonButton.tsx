@@ -60,8 +60,8 @@ export const LessonButton = ({
         }}
       >
         {current ? (
-          <div className="relative h-[102px] w-[102px]">
-            <div className="absolute -top-6 left-2.5 z-10 animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 font-bold uppercase tracking-wide text-green-500">
+          <div className="relative h-[50px] w-[50px]">
+            <div className="absolute -top-12 -left-3 z-10 animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 font-bold uppercase tracking-wide text-green-500">
               Start
               <div
                 className="absolute -bottom-2 left-1/2 h-0 w-0 -translate-x-1/2 transform border-x-8 border-t-8 border-x-transparent"
@@ -82,11 +82,11 @@ export const LessonButton = ({
               <Button
                 size="rounded"
                 variant={locked ? "locked" : "secondary"}
-                className="h-[70px] w-[70px] border-b-8"
+                className="h-[50px] w-[50px] border-b-8"
               >
                 <Icon
                   className={cn(
-                    "h-[55] w-[55]"
+                    "h-5 w-5"
                     // locked
                     //   ? "fill-neutral-400 stroke-neutral-400 text-neutral-400"
                     //   : "fill-primary-foreground text-primary-foreground",
@@ -100,11 +100,11 @@ export const LessonButton = ({
           <Button
             size="rounded"
             variant={locked ? "locked" : "secondary"}
-            className="h-[70px] w-[70px] border-b-8"
+            className="h-[50px] w-[50px] border-b-8"
           >
             <Icon
               className={cn(
-                "h-10 w-10",
+                "h-4 w-4",
                 locked
                   ? "fill-neutral-400 stroke-neutral-400 text-neutral-400"
                   : "fill-primary-foreground text-primary-foreground",
