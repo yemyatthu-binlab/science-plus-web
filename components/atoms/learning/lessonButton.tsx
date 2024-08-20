@@ -44,7 +44,7 @@ export const LessonButton = ({
 
   const Icon = isCompleted ? Check : isLast ? Crown : AtomIcon;
 
-  const href = isCompleted ? `/lesson/${id}` : "/lesson";
+  const href = isCompleted ? `/lesson/${id}` : "/lesson/data-structure/what-are-data-structure";
 
   return (
     <Link
