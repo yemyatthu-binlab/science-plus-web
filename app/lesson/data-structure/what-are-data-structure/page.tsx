@@ -1,42 +1,37 @@
 "use client";
 
-import { HeaderProgress } from "@/components/atoms/lessons/headerProgress";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { HeaderProgress } from "@/components/atoms/common/headerProgress";
+import ArrayExplanation from "@/components/molecules/lessons/ds_course/ls1/arrayExplanation";
+import DSIntro from "@/components/molecules/lessons/ds_course/ls1/dsIntro";
+import Lesson1Review from "@/components/molecules/lessons/ds_course/ls1/ls1Review";
+import RecordExplanation from "@/components/molecules/lessons/ds_course/ls1/recordExplanation";
+import WhatIsDs from "@/components/molecules/lessons/ds_course/ls1/whatIsDs";
+import { useState } from "react";
 
 const DSLesson = () => {
+  const [progress, setProgress] = useState(1);
+  const numberOfSection = 5;
   return (
     <div>
       <HeaderProgress
         hearts={100}
-        percentage={10}
+        percentage={progress * (100 / numberOfSection)}
         hasActiveSubscription={false}
       />
       <div className="max-w-[560px] mx-auto mt-5">
-        <div className="flex items-center justify-center my-20">
-          <Image
-            src={"/ds_ls1_intro1.png"}
-            alt={"Data Structure Intro"}
-            height={"250"}
-            width={"460"}
-          />
-        </div>
-        <div className="mx-5">
-          <h1 className="text-left font-bold text-2xl">
-            Data Structures ဆိုတာဘာလဲ
-          </h1>
-          <p className="text-sm mt-2">
-            ဒီသင်ခန်းစာမှာတော့ data structure ဟာဘာလဲဆိုတာကို ကျွန်တော်နဲ့အတူ
-            လေ့လာကြည့်ကြရအောင်။
-          </p>
-          <div className="my-5 w-full absolute bottom-0 right-0 md:relative">
-            <div className="flex-shrink items-center mx-4 md:mx-0">
-              <Button variant="black" className="capitalize">
-                Start Lesson
-              </Button>
-            </div>
-          </div>
-        </div>
+        {progress == 1 && (
+          <DSIntro handleClick={() => setProgress(progress + 1)} />
+        )}
+        {progress == 2 && (
+          <WhatIsDs handleClick={() => setProgress(progress + 1)} />
+        )}
+        {progress == 3 && (
+          <ArrayExplanation handleClick={() => setProgress(progress + 1)} />
+        )}
+        {progress == 4 && (
+          <RecordExplanation handleClick={() => setProgress(progress + 1)} />
+        )}
+        {progress == 5 && <Lesson1Review />}
       </div>
     </div>
   );
