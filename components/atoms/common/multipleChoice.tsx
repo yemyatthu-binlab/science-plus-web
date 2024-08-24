@@ -9,6 +9,7 @@ type Props = {
   questionList: SciencePlus.Question[];
   questionState: SciencePlus.QuestionSructure;
   title: string;
+  customHeader?: React.ReactElement;
   questionUniqueId: string;
   handleSubmit: () => void;
   handleAnswerChange: (value: string) => void;
@@ -21,6 +22,7 @@ const MultipleChoice = ({
   handleSubmit,
   handleAnswerChange,
   questionUniqueId,
+  customHeader,
   className,
   ...props
 }: Props) => {
@@ -51,7 +53,11 @@ const MultipleChoice = ({
 
   return (
     <div className="rounded-md bg-gray-100 p-5 mt-14">
-      <ThemeText className="text-sm">{title}</ThemeText>
+      {customHeader ? (
+        customHeader
+      ) : (
+        <ThemeText className="text-sm">{title}</ThemeText>
+      )}
       <RadioGroup
         className="mt-5"
         disabled={questionState.isAnswered}
