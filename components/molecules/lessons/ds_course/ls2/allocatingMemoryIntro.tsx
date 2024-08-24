@@ -19,7 +19,7 @@ const AllocatingMemoryIntro = ({ handleClick }: Props) => {
         Allocating Memory
       </ThemeText>
       <ThemeText className="mt-5">
-        In this lesson, we'll investigate how data structures are stored in
+        In this lesson, we&apos;ll investigate how data structures are stored in
         memory.
       </ThemeText>
       <SectionSwitchBtn

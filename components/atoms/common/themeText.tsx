@@ -40,4 +40,6 @@ const ThemeText = forwardRef<HTMLParagraphElement, TextProps>(
   }
 );
 
+ThemeText.displayName = "ThemeText";
+
 export default ThemeText;

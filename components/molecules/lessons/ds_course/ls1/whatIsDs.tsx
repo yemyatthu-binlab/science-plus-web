@@ -55,8 +55,8 @@ const WhatIsDs = ({ handleClick }: Props) => {
         hundred seconds the computer can read 500 × 100 = 50 000 documents.
       </p>
       <p className="mt-2 mb-5">
-        But if you've ever used the search feature on your computer, you know
-        that it's much faster than this. It organizes data in a way that doesn't
+        But if you&apos;ve ever used the search feature on your computer, you know
+        that it&apos;s much faster than this. It organizes data in a way that doesn&apos;t
         require reading through its entire storage each time.
       </p>
       {/* <p className="mt-2 mb-14">
@@ -65,7 +65,7 @@ const WhatIsDs = ({ handleClick }: Props) => {
       </p>
       <CodeListWithInput /> */}
       <p className="mt-2 mb-5">
-        Next, we'll investigate a data structure for storing multiple values
+        Next, we&apos;ll investigate a data structure for storing multiple values
         together.
       </p>
       <SectionSwitchBtn

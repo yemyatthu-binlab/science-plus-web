@@ -115,8 +115,8 @@ const RecordExplanation = ({ handleClick }: Props) => {
       />
 
       <ThemeText className="mt-10">
-        We've seen how records can store data in different contexts. To organize
-        and manipulate records, we'll need to investigate how they're stored in
+        We&apos;ve seen how records can store data in different contexts. To organize
+        and manipulate records, we&apos;ll need to investigate how they&apos;re stored in
         computer memory.
       </ThemeText>
 
