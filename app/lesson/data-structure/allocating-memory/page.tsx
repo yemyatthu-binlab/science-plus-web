@@ -7,6 +7,7 @@ import Lesson1Review from "@/components/molecules/lessons/ds_course/ls1/ls1Revie
 import RecordExplanation from "@/components/molecules/lessons/ds_course/ls1/recordExplanation";
 import WhatIsDs from "@/components/molecules/lessons/ds_course/ls1/whatIsDs";
 import AllocatingMemoryIntro from "@/components/molecules/lessons/ds_course/ls2/allocatingMemoryIntro";
+import MemoryAddress from "@/components/molecules/lessons/ds_course/ls2/memoryAddress";
 import { useState } from "react";
 
 const DSLesson = () => {
@@ -25,10 +26,10 @@ const DSLesson = () => {
             handleClick={() => setProgress(progress + 1)}
           />
         )}
-        {/* {progress == 2 && (
-          <WhatIsDs handleClick={() => setProgress(progress + 1)} />
+        {progress == 2 && (
+          <MemoryAddress handleClick={() => setProgress(progress + 1)} />
         )}
-        {progress == 3 && (
+        {/* {progress == 3 && (
           <ArrayExplanation handleClick={() => setProgress(progress + 1)} />
         )}
         {progress == 4 && (

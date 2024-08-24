@@ -1,3 +1,4 @@
+import HighLightText from "@/components/atoms/common/highlightText";
 import MultipleChoice from "@/components/atoms/common/multipleChoice";
 import SectionSwitchBtn from "@/components/atoms/common/sectionSwitchBtn";
 import ThemeText from "@/components/atoms/common/themeText";
@@ -64,22 +65,10 @@ const RecordExplanation = ({ handleClick }: Props) => {
         </ThemeText>
       </div>
       <ThemeText className="mt-5">
-        The record{" "}
-        <span className="bg-gray-200 p-1 text-sm rounded-sm py-1 px-2 leading-7 ">
-          Contact
-        </span>{" "}
-        contains fields{" "}
-        <span className="bg-gray-200 p-1 text-sm rounded-sm py-1 px-2 leading-7 ">
-          name
-        </span>
-        ,{" "}
-        <span className="bg-gray-200 p-1 text-sm rounded-sm py-1 px-2 leading-7 ">
-          phone
-        </span>
-        , and{" "}
-        <span className="bg-gray-200 p-1 text-sm rounded-sm py-1 px-2 leading-7 ">
-          relationship
-        </span>
+        The record <HighLightText title="Contact" /> contains fields{" "}
+        <HighLightText title="name" /> ,
+        <HighLightText title="phone" /> , and{" "}
+        <HighLightText title="relationship" />
       </ThemeText>
       <Image
         src={"/course-record_explanation2.png"}
