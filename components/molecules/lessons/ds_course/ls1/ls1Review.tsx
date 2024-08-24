@@ -21,7 +21,7 @@ const Lesson1Review = () => {
         structures. Arrays and records are two types of data structures.
       </ThemeText>
       <ThemeText className="mt-5 mb-10">
-        Next, we'll investigate how computers store data structures in memory.
+        Next, we&apos;ll investigate how computers store data structures in memory.
       </ThemeText>
       <SectionSwitchBtn title="Finish lesson" handleClick={() => {router.push("/learn")}} />
     </div>

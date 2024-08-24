@@ -12,7 +12,7 @@ const ChoiceSelectionBox = ({ strList, correctAnswer, ...props }: Props) => {
   return (
     <div className={cn("grid grid-cols-2 gap-5", props.className)}>
       {strList.map((item, idx) => (
-        <div>
+        <div key={idx}>
           <Button
             variant={"outlineGrey"}
             onClick={() => {

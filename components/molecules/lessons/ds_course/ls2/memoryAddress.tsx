@@ -60,7 +60,7 @@ const MemoryAddress = ({ handleClick }: Props) => {
         </ThemeText>
       </div>
       <ThemeText className="mt-14">
-        Here's a record containing contact information:
+        Here&apos;s a record containing contact information:
       </ThemeText>
       <Image
         src={"/allocating_memory_2.png"}
@@ -99,7 +99,7 @@ const MemoryAddress = ({ handleClick }: Props) => {
         customHeader={
           <div>
             <ThemeText>
-              After creating the following contact, what's the value of{" "}
+              After creating the following contact, what&apos;s the value of{" "}
               <HighLightText title="new_contact" /> ?
             </ThemeText>
             <div className="border border-gray-300 p-3 m-10 rounded-md">

@@ -106,7 +106,7 @@ const ArrayExplanation = ({ handleClick }: Props) => {
         (the location with index 0 ) as A[0]. The location with index 2 is A[2].
       </ThemeText>
       <div className="rounded-md bg-gray-100 mt-14 p-5">
-        <ThemeText>What's is A[2] ?</ThemeText>
+        <ThemeText>What&apos;s is A[2] ?</ThemeText>
         <Image
           src={"/array_explanation2.png"}
           alt={"Array Explanation 2"}
@@ -162,7 +162,7 @@ const ArrayExplanation = ({ handleClick }: Props) => {
         className="mt-5"
       />
       <ThemeText className="mt-14">
-        A caller ID program needs to store different data, like a contact's name
+        A caller ID program needs to store different data, like a contact&apos;s name
         and phone number:
       </ThemeText>
       <Image
