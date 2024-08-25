@@ -13,38 +13,6 @@ const RecordExplanation = ({ handleClick }: Props) => {
   const [quesAState, setQuesAState] = useState(quesADefaultState);
   const [quesBState, setQuesBState] = useState(quesBDefaultState);
 
-  const handleQA1AnsChange = (value: string) => {
-    if (!quesAState.isAnswered) {
-      setQuesAState((qaVal) => ({ ...qaVal, value }));
-    }
-  };
-
-  const handleQA1AnsSubmit = () => {
-    if (quesAState.value) {
-      setQuesAState((prev) => ({
-        ...prev,
-        isAnswered: true,
-        isCorrect: prev.correctAnswer == prev.value,
-      }));
-    }
-  };
-
-  const handleQBAnsChange = (value: string) => {
-    if (!quesBState.isAnswered) {
-      setQuesBState((qaVal) => ({ ...qaVal, value }));
-    }
-  };
-
-  const handleQBAnsSubmit = () => {
-    if (quesBState.value) {
-      setQuesBState((prev) => ({
-        ...prev,
-        isAnswered: true,
-        isCorrect: prev.correctAnswer == prev.value,
-      }));
-    }
-  };
-
   return (
     <div className="mx-5 pb-10">
       <ThemeText variant={"title"}>Records</ThemeText>
@@ -81,8 +49,7 @@ const RecordExplanation = ({ handleClick }: Props) => {
         questionList={questionA}
         questionState={quesAState}
         title="Where would you find Bea's phone number?"
-        handleAnswerChange={handleQA1AnsChange}
-        handleSubmit={handleQA1AnsSubmit}
+        setQuestionState={setQuesAState}
         questionUniqueId="#recordQA1"
       />
       <ThemeText className="mt-10">
@@ -109,15 +76,14 @@ const RecordExplanation = ({ handleClick }: Props) => {
         questionList={questionB}
         questionState={quesBState}
         title="Where would you find Bea's phone number?"
-        handleAnswerChange={handleQBAnsChange}
-        handleSubmit={handleQBAnsSubmit}
+        setQuestionState={setQuesBState}
         questionUniqueId="#recordQA2"
       />
 
       <ThemeText className="mt-10">
-        We&apos;ve seen how records can store data in different contexts. To organize
-        and manipulate records, we&apos;ll need to investigate how they&apos;re stored in
-        computer memory.
+        We&apos;ve seen how records can store data in different contexts. To
+        organize and manipulate records, we&apos;ll need to investigate how
+        they&apos;re stored in computer memory.
       </ThemeText>
 
       <SectionSwitchBtn

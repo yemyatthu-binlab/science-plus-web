@@ -3,7 +3,7 @@ import ThemeText from "./themeText";
 import { cn } from "@/lib/utils";
 import { ClassValue } from "clsx";
 import { Button } from "@/components/ui/button";
-import { HTMLAttributes } from "react";
+import { Dispatch, HTMLAttributes, SetStateAction } from "react";
 
 type Props = {
   questionList: SciencePlus.Question[];
@@ -11,21 +11,37 @@ type Props = {
   title: string;
   customHeader?: React.ReactElement;
   questionUniqueId: string;
-  handleSubmit: () => void;
-  handleAnswerChange: (value: string) => void;
+  setQuestionState: Dispatch<SetStateAction<SciencePlus.QuestionSructure>>;
+  // handleSubmit: () => void;
+  // handleAnswerChange: (value: string) => void;
 } & HTMLAttributes<HTMLDivElement>;
 
 const MultipleChoice = ({
   questionState,
   questionList,
   title,
-  handleSubmit,
-  handleAnswerChange,
+  setQuestionState,
   questionUniqueId,
   customHeader,
   className,
   ...props
 }: Props) => {
+  const handleAnsChange = (value: string) => {
+    if (!questionState.isAnswered) {
+      setQuestionState((qaVal) => ({ ...qaVal, value }));
+    }
+  };
+
+  const handleAnsSubmit = () => {
+    if (questionState.value) {
+      setQuestionState((prev) => ({
+        ...prev,
+        isAnswered: true,
+        isCorrect: prev.correctAnswer == prev.value,
+      }));
+    }
+  };
+
   const addExtraStyleForRadio = (
     radioItemVal: string,
     customStyle?: string[]
@@ -61,7 +77,7 @@ const MultipleChoice = ({
       <RadioGroup
         className="mt-5"
         disabled={questionState.isAnswered}
-        onValueChange={handleAnswerChange}
+        onValueChange={handleAnsChange}
       >
         {questionList.map((item, idx) => (
           <div
@@ -76,7 +92,8 @@ const MultipleChoice = ({
                 addExtraStyleForRadio(item.value, [
                   "border-green-700 text-green-700",
                   "border-red-700 text-red-700",
-                ])
+                ]),
+                "min-w-[16px] mr-1"
               )}
               value={item.value}
               id={questionUniqueId + idx}
@@ -87,8 +104,9 @@ const MultipleChoice = ({
       </RadioGroup>
       {!questionState.isAnswered && (
         <Button
-          onClick={handleSubmit}
+          onClick={handleAnsSubmit}
           variant="black"
+          disabled={!questionState.value}
           className="capitalize w-auto mt-5"
         >
           Submit
