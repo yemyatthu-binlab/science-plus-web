@@ -1,0 +1,307 @@
+export const SketchSVG = () => {
+  return (
+    <svg width="330" height="366" overflow="visible" touch-action="none">
+      <g>
+        <g
+          touch-action="none"
+        >
+          <polygon
+            fill="rgba(100%,100%,100%,1)"
+            stroke="rgba(0%,0%,0%,1)"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 155 25)"
+            points="-25, -25 25, -25 25, 25 -25, 25 "
+          ></polygon>
+          <polygon
+            fill="rgba(100%,100%,100%,1)"
+            stroke="rgba(0%,0%,0%,1)"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 155 85)"
+            points="-25, -25 25, -25 25, 25 -25, 25 "
+          ></polygon>
+          <polygon
+            fill="rgba(100%,100%,100%,1)"
+            stroke="rgba(0%,0%,0%,1)"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 155 145)"
+            points="-25, -25 25, -25 25, 25 -25, 25 "
+          ></polygon>
+          <circle
+            fill="rgba(0%,0%,0%,1)"
+            stroke="rgba(0%,0%,0%,1)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 155 145)"
+            r="4"
+          ></circle>
+          <polygon
+            fill="rgba(100%,100%,100%,1)"
+            stroke="rgba(0%,0%,0%,1)"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 255 100)"
+            points="-25, -25 25, -25 25, 25 -25, 25 "
+          ></polygon>
+          <polygon
+            fill="rgba(100%,100%,100%,1)"
+            stroke="rgba(0%,0%,0%,1)"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 305 100)"
+            points="-25, -25 25, -25 25, 25 -25, 25 "
+          ></polygon>
+          <polygon
+            fill="rgba(0%,0%,0%,0)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 255 75)"
+            points="-25, 0 25, 0 -25, 0 "
+          ></polygon>
+          <polyline
+            fill="rgba(0%,0%,0%,0)"
+            stroke="rgba(0%,0%,0%,1)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 130 50)"
+            points="25, -95 28.459249661063723, -94.96634632689056 31.698940599167358, -94.86682503689308 34.726271460965336, -94.70359572400386 37.548440893112094, -94.47881798221935 40.17264754226206, -94.1946514055358 42.60609005506965, -93.85325558794946 44.855967078189295, -93.45679012345678 46.92947725827545, -93.00741460605406 48.83381924198252, -92.50728862973762 50.57619167596492, -91.95857178850376 52.163793206877095, -91.36342367634882 53.6038224813735, -90.72400388726919 54.90347814610853, -90.04247201526115 56.06995884773663, -89.32098765432099 57.110463232912196, -88.56171039844509 58.03218994828973, -87.76679984162978 58.842337640523596, -86.93841557787137 59.54810495626822, -86.07871720116617 60.15669054217806, -85.18986430551055 60.67529304490756, -84.27401648490084 61.111111111111114, -83.33333333333334 61.471343387443156, -82.36997444480437 61.76318852055813, -81.38609941331029 61.993845157110464, -80.38386783284743 62.170511943754576, -79.36543929741211 62.30038752714489, -78.33297340100061 62.39067055393585, -77.28862973760933 62.4485596707819, -76.23456790123458 62.48125352433744, -75.17294748587267 62.49595076125688, -74.10592808551992 62.499850028194686, -73.03566929417269 62.5001499718053, -71.9643307058273 62.504049238743114, -70.89407191448007 62.51874647566258, -69.82705251412736 62.55144032921811, -68.76543209876543 62.60932944606414, -67.71137026239066 62.6996124728551, -66.66702659899939 62.829488056245424, -65.63456070258792 63.006154842889536, -64.61613216715257 63.23681147944186, -63.6139005866897 63.52865661255683, -62.630025555195616 63.888888888888886, -61.66666666666667 64.32470695509245, -60.72598351509915 64.84330945782193, -59.81013569448944 65.45189504373178, -58.92128279883383 66.15766235947642, -58.06158442212864 66.96781005171029, -57.23320015837023 67.88953676708778, -56.438289601554914 68.93004115226339, -55.67901234567902 70.09652185389147, -54.957527984738874 71.3961775186265, -54.27599611273081 72.83620679312288, -53.636576323651155 74.42380832403508, -53.04142821149624 76.16618075801749, -52.49271137026239 78.07052274172457, -51.99258539394594 80.1440329218107, -51.543209876543216 82.39390994493036, -51.146744412050545 84.82735245773794, -50.80534859446425 87.4515591068879, -50.52118201778065 90.27372853903464, -50.29640427599611 93.30105940083264, -50.13317496310693 96.54075033893625, -50.033653673109455 100, -50 "
+          ></polyline>
+          <polyline
+            fill="rgba(0%,0%,0%,0)"
+            stroke="rgba(0%,0%,0%,1)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(0.0010000000000047748 0 0 -0.0010000000000047748 229.9995 100)"
+            points="-0.5, 0 0.5, 0 "
+          ></polyline>
+          <polygon
+            fill="rgba(0%,0%,0%,1)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(6.123233995736766e-17 1 1 -6.123233995736766e-17 222 100)"
+            points="4.898587196589413e-16, 8 -6.928203230275509, -4.000000000000001 6.9282032302755105, -3.9999999999999973 "
+          ></polygon>
+          <rect
+            fill="rgba(100%,100%,100%,0)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 172 216)"
+            x="-135"
+            y="-26"
+            width="270"
+            height="52"
+            rx="6"
+            ry="6"
+          ></rect>
+          <rect
+            fill="rgba(55.69%,55.69%,55.69%,0)"
+            stroke="rgba(55.69%,55.69%,55.69%,0)"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 172 216)"
+            x="-135"
+            y="-26"
+            width="270"
+            height="52"
+            rx="6"
+            ry="6"
+          ></rect>
+          <polygon
+            fill="rgba(0%,0%,0%,0)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 113 216)"
+            points="-50, -16 50, -16 50, 16 -50, 16 "
+          ></polygon>
+          <polygon
+            fill="rgba(0%,0%,0%,0)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 35 216)"
+            points="-12, -12 12, -12 12, 12 -12, 12 "
+          ></polygon>
+          <rect
+            fill="rgba(100%,100%,100%,0)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 172 278)"
+            x="-135"
+            y="-26"
+            width="270"
+            height="52"
+            rx="6"
+            ry="6"
+          ></rect>
+          <rect
+            fill="rgba(55.69%,55.69%,55.69%,0)"
+            stroke="rgba(55.69%,55.69%,55.69%,0)"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 172 278)"
+            x="-135"
+            y="-26"
+            width="270"
+            height="52"
+            rx="6"
+            ry="6"
+          ></rect>
+          <polygon
+            fill="rgba(0%,0%,0%,0)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 113 278)"
+            points="-50, -16 50, -16 50, 16 -50, 16 "
+          ></polygon>
+          <polygon
+            fill="rgba(0%,0%,0%,0)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 35 278)"
+            points="-12, -12 12, -12 12, 12 -12, 12 "
+          ></polygon>
+          <rect
+            fill="rgba(100%,100%,100%,0)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 172 340)"
+            x="-135"
+            y="-26"
+            width="270"
+            height="52"
+            rx="6"
+            ry="6"
+          ></rect>
+          <rect
+            fill="rgba(55.69%,55.69%,55.69%,0)"
+            stroke="rgba(55.69%,55.69%,55.69%,0)"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 172 340)"
+            x="-135"
+            y="-26"
+            width="270"
+            height="52"
+            rx="6"
+            ry="6"
+          ></rect>
+          <polygon
+            fill="rgba(0%,0%,0%,0)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 113 340)"
+            points="-50, -16 50, -16 50, 16 -50, 16 "
+          ></polygon>
+          <polygon
+            fill="rgba(0%,0%,0%,0)"
+            stroke="rgba(0%,0%,0%,0)"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-dasharray=""
+            vector-effect="non-scaling-stroke"
+            transform="matrix(1 0 0 -1 35 340)"
+            points="-12, -12 12, -12 12, 12 -12, 12 "
+          ></polygon>
+          <defs>
+            <filter
+              id="shadow_Interactive_0_dogXspotsXdemo3889097823"
+              x="-100%"
+              y="-100%"
+              width="300%"
+              height="300%"
+            >
+              <feGaussianBlur
+                in="SourceAlpha"
+                stdDeviation="12"
+              ></feGaussianBlur>
+              <feOffset dx="0" dy="4"></feOffset>
+              <feComponentTransfer>
+                <feFuncA type="linear" slope="0.5"></feFuncA>
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+              </feMerge>
+            </filter>
+          </defs>
+          <g filter="url(#shadow_Interactive_0_dogXspotsXdemo3889097823)"></g>
+        </g>
+      </g>
+    </svg>
+  );
+};

@@ -1,6 +1,7 @@
 import ChoiceSelectionBox from "@/components/atoms/common/choiceSelectionBox";
 import HighLightText from "@/components/atoms/common/highlightText";
 import MultipleChoice from "@/components/atoms/common/multipleChoice";
+import SectionSwitchBtn from "@/components/atoms/common/sectionSwitchBtn";
 import ThemeText from "@/components/atoms/common/themeText";
 import Image from "next/image";
 import { useState } from "react";
@@ -11,22 +12,6 @@ type Props = {
 
 const MemoryAddress = ({ handleClick }: Props) => {
   const [quesAState, setQuestA] = useState(quesADefaultState);
-
-  const handleQA1AnsChange = (value: string) => {
-    if (!quesAState.isAnswered) {
-      setQuestA((qaVal) => ({ ...qaVal, value }));
-    }
-  };
-
-  const handleQA1AnsSubmit = () => {
-    if (quesAState.value) {
-      setQuestA((prev) => ({
-        ...prev,
-        isAnswered: true,
-        isCorrect: prev.correctAnswer == prev.value,
-      }));
-    }
-  };
 
   return (
     <div className="mx-5 pb-10">
@@ -95,7 +80,6 @@ const MemoryAddress = ({ handleClick }: Props) => {
         questionState={quesAState}
         title="After creating the following contact, what's the value of
             new_contact?"
-        handleAnswerChange={handleQA1AnsChange}
         customHeader={
           <div>
             <ThemeText>
@@ -109,9 +93,28 @@ const MemoryAddress = ({ handleClick }: Props) => {
             </div>
           </div>
         }
-        handleSubmit={handleQA1AnsSubmit}
+        setQuestionState={setQuestA}
         questionUniqueId="#memoryAddressQA1"
       />
+      {quesAState.isAnswered && (
+        <div>
+          <ThemeText className="my-5">
+            The actual address at which the contact is stored is arbitrary and
+            could be many numbers. It has no use other than to help us find the
+            record we created.
+          </ThemeText>
+          <ThemeText className="my-5">
+            For this reason, instead of always referring to a record by its
+            address, we use shortcuts.
+          </ThemeText>
+          <SectionSwitchBtn
+            title="Continue"
+            className="mt-10 relative"
+            buttonWrapperStyle="mx-0"
+            handleClick={handleClick}
+          />
+        </div>
+      )}
     </div>
   );
 };

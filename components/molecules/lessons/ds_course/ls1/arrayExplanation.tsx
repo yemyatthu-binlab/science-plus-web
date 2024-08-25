@@ -47,36 +47,6 @@ const ArrayExplanation = ({ handleClick }: Props) => {
     isCorrect: false,
   });
 
-  const handleQA2AnsChange = (value: string) => {
-    if (!qa2.isAnswered) {
-      setQa2((qaVal) => ({ ...qaVal, value }));
-    }
-  };
-
-  const handleQA2AnsSubmit = () => {
-    if (qa2.value) {
-      setQa2((prev) => ({
-        ...prev,
-        isAnswered: true,
-        isCorrect: prev.correctAnswer == prev.value,
-      }));
-    }
-  };
-
-  const addExtraStyleForRadio = (radioItemVal: string): ClassValue => {
-    if (!qa2.isAnswered) return;
-
-    if (
-      (qa2.value == radioItemVal && qa2.value == qa2.correctAnswer) ||
-      radioItemVal == qa2.correctAnswer
-    ) {
-      return "border rounded-md border-green-500 bg-green-50";
-    }
-    if (qa2.value == radioItemVal && qa2.value !== qa2.correctAnswer) {
-      return "border rounded-md border-red-500 bg-red-100";
-    }
-  };
-
   return (
     <div className="mx-5 pb-10">
       <ThemeText variant={"title"}>Arrays</ThemeText>
@@ -162,8 +132,8 @@ const ArrayExplanation = ({ handleClick }: Props) => {
         className="mt-5"
       />
       <ThemeText className="mt-14">
-        A caller ID program needs to store different data, like a contact&apos;s name
-        and phone number:
+        A caller ID program needs to store different data, like a contact&apos;s
+        name and phone number:
       </ThemeText>
       <Image
         src={"/array_explanation4.png"}
@@ -188,8 +158,7 @@ const ArrayExplanation = ({ handleClick }: Props) => {
         questionList={qurstionA}
         questionState={qa2}
         title="Where would you find Bea's phone number?"
-        handleAnswerChange={handleQA2AnsChange}
-        handleSubmit={handleQA2AnsSubmit}
+        setQuestionState={setQa2}
         questionUniqueId="#arrayQA2"
       />
       <ThemeText className="mt-14">

@@ -10,6 +10,13 @@ import { useState } from "react";
 
 const DSLesson = () => {
   const [progress, setProgress] = useState(1);
+
+  const handleClick = () => {
+    if (typeof window == "undefined") return;
+    setProgress(progress + 1);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  };
+
   const numberOfSection = 5;
   return (
     <div>
@@ -19,18 +26,10 @@ const DSLesson = () => {
         hasActiveSubscription={false}
       />
       <div className="max-w-[560px] mx-auto mt-5">
-        {progress == 1 && (
-          <DSIntro handleClick={() => setProgress(progress + 1)} />
-        )}
-        {progress == 2 && (
-          <WhatIsDs handleClick={() => setProgress(progress + 1)} />
-        )}
-        {progress == 3 && (
-          <ArrayExplanation handleClick={() => setProgress(progress + 1)} />
-        )}
-        {progress == 4 && (
-          <RecordExplanation handleClick={() => setProgress(progress + 1)} />
-        )}
+        {progress == 1 && <DSIntro handleClick={handleClick} />}
+        {progress == 2 && <WhatIsDs handleClick={handleClick} />}
+        {progress == 3 && <ArrayExplanation handleClick={handleClick} />}
+        {progress == 4 && <RecordExplanation handleClick={handleClick} />}
         {progress == 5 && <Lesson1Review />}
       </div>
     </div>
