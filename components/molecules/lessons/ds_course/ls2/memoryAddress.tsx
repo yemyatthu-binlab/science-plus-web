@@ -119,7 +119,7 @@ const MemoryAddress = ({ handleClick }: Props) => {
   );
 };
 
-const questionA: SciencePlus.Question[] = [
+const questionA: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "7801",
     value: "7801",

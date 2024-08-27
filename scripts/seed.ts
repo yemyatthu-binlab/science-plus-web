@@ -79,18 +79,50 @@ const main = async () => {
               unitId: units[0].id,
               title: "What are Data Structures",
               order: 1,
+              lessonRoute: "data-structure/what-are-data-structure",
             },
-            { unitId: units[0].id, title: "Allocating Memory", order: 2 },
-            { unitId: units[0].id, title: "Records in Memory", order: 3 },
-            { unitId: units[0].id, title: "Pointers to Pointers", order: 4 },
-            { unitId: units[0].id, title: "Linked Lists", order: 5 },
-            { unitId: units[0].id, title: "Understanding Big O", order: 6 },
+            {
+              unitId: units[0].id,
+              title: "Allocating Memory",
+              order: 2,
+              lessonRoute: "data-structure/allocating-memory",
+            },
+            {
+              unitId: units[0].id,
+              title: "Records in Memory",
+              order: 3,
+              lessonRoute: "data-structure/record-in-memory",
+            },
+            {
+              unitId: units[0].id,
+              title: "Pointers to Pointers",
+              order: 4,
+              lessonRoute: "comming-soon",
+            },
+            {
+              unitId: units[0].id,
+              title: "Linked Lists",
+              order: 5,
+              lessonRoute: "",
+            },
+            {
+              unitId: units[0].id,
+              title: "Understanding Big O",
+              order: 6,
+              lessonRoute: "comming-soon",
+            },
             {
               unitId: units[0].id,
               title: "The Mathematics of Big O",
               order: 7,
+              lessonRoute: "comming-soon",
             },
-            { unitId: units[0].id, title: "Run Time", order: 8 },
+            {
+              unitId: units[0].id,
+              title: "Run Time",
+              order: 8,
+              lessonRoute: "comming-soon",
+            },
           ])
           .returning();
 
@@ -102,54 +134,61 @@ const main = async () => {
             {
               lessonId: lessons[0].id,
               type: "SELECT",
-              question: 'Which one of these is "the man"?',
+              question: 'Array QA1"?',
               order: 1,
             },
             {
               lessonId: lessons[0].id,
               type: "SELECT",
-              question: 'Which one of these is "the woman"?',
+              question: "Record QA2",
               order: 2,
             },
             {
               lessonId: lessons[0].id,
               type: "SELECT",
-              question: 'Which one of these is "the boy"?',
+              question: "Record QA3",
               order: 3,
             },
           ])
           .returning();
 
-        await db.insert(schema.challengeOptions).values([
-          {
-            challengeId: challenges[0].id,
-            correct: true,
-            text: "Option A",
-            imageSrc: "",
-            audioSrc: "",
-          },
-          {
-            challengeId: challenges[0].id,
-            correct: false,
-            text: "Option B",
-            imageSrc: "",
-            audioSrc: "",
-          },
-          {
-            challengeId: challenges[0].id,
-            correct: false,
-            text: "Option C",
-            imageSrc: "",
-            audioSrc: "",
-          },
-          {
-            challengeId: challenges[0].id,
-            correct: false,
-            text: "Option D",
-            imageSrc: "",
-            audioSrc: "",
-          },
-        ]);
+        // for (const challenge of challenges) {
+        //   if (challenge.order === 1) {
+        //     await db.insert(schema.challengeOptions).values([
+        //       {
+        //         challengeId: challenge.id,
+        //         correct: true,
+        //         text: "Challeenge 1 Option 1",
+        //         imageSrc: "",
+        //         audioSrc: "",
+        //       },
+        //     ]);
+        //   }
+
+        //   if (challenge.order === 2) {
+        //     await db.insert(schema.challengeOptions).values([
+        //       {
+        //         challengeId: challenge.id,
+        //         correct: true,
+        //         text: "Callenge 2 Option 1",
+        //         imageSrc: "",
+        //         audioSrc: "",
+        //       },
+        //     ]);
+        //   }
+
+        //   if (challenge.order === 3) {
+        //     await db.insert(schema.challengeOptions).values([
+        //       {
+        //         challengeId: challenge.id,
+        //         correct: true,
+        //         text: "Callenge 3 Option 1",
+        //         imageSrc: "",
+        //         audioSrc: "",
+        //       },
+        //     ]);
+        //   }
+        // }
       }
     }
   } catch (error) {

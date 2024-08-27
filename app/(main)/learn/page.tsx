@@ -1,4 +1,6 @@
 import { FeedWrapper } from "@/components/atoms/learning/feedWrapper";
+import { Promo } from "@/components/atoms/learning/promo";
+import { Quests } from "@/components/atoms/learning/quest";
 import StickyWrapper from "@/components/atoms/learning/stickyWrapper";
 import { Unit } from "@/components/atoms/learning/Unit";
 import { UserProgress } from "@/components/atoms/learning/userProgress";
@@ -8,6 +10,7 @@ import {
   getLessonPercentage,
   getUnits,
   getUserProgress,
+  getUserSubscription,
 } from "@/database/queries";
 import { redirect } from "next/navigation";
 const LearningPage = async () => {
@@ -15,10 +18,13 @@ const LearningPage = async () => {
   const units = await getUnits();
   const courseProgress = await getCourseProgress();
   const lessonPercentage = await getLessonPercentage();
+  const userSubscription = await getUserSubscription();
 
   if (!userPorgess || !userPorgess.activeCourse) {
     redirect("/courses");
   }
+
+  const isPro = !!userSubscription?.isActive;
 
   return (
     <div className="flex flex-row-reverse gap-[49px] px-6">
@@ -27,8 +33,10 @@ const LearningPage = async () => {
           activeCourse={userPorgess.activeCourse}
           hearts={userPorgess.hearts}
           points={userPorgess.points}
-          hasActiveSubscription={true}
+          hasActiveSubscription={isPro}
         />
+        {!isPro && <Promo />}
+        <Quests points={userPorgess.points} />
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userPorgess.activeCourse.title} />

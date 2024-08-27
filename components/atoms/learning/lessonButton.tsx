@@ -16,6 +16,7 @@ type LessonButtonProps = {
   locked?: boolean;
   current?: boolean;
   percentage: number;
+  lessonRoute: string;
 };
 
 export const LessonButton = ({
@@ -25,6 +26,7 @@ export const LessonButton = ({
   locked,
   current,
   percentage,
+  lessonRoute,
 }: LessonButtonProps) => {
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
@@ -44,11 +46,9 @@ export const LessonButton = ({
 
   const Icon = isCompleted ? Check : isLast ? Crown : AtomIcon;
 
-  const href = isCompleted ? `/lesson/${id}` : "/lesson/data-structure/what-are-data-structure";
-
   return (
     <Link
-      href={href}
+      href={"/lesson/" + lessonRoute}
       aria-disabled={locked}
       style={{ pointerEvents: locked ? "none" : "auto" }}
     >
@@ -75,14 +75,14 @@ export const LessonButton = ({
                   stroke: "#4ade80",
                 },
                 trail: {
-                  stroke: "#e5e7eb",
+                  stroke: "#f1f1f1",
                 },
               }}
             >
               <Button
                 size="rounded"
                 variant={locked ? "locked" : "secondary"}
-                className="h-[50px] w-[50px] border-b-8"
+                className="h-[41px] w-[41px] border-b-8"
               >
                 <Icon
                   className={cn(
@@ -100,7 +100,7 @@ export const LessonButton = ({
           <Button
             size="rounded"
             variant={locked ? "locked" : "secondary"}
-            className="h-[50px] w-[50px] border-b-8"
+            className="h-[41px] w-[41px] border-b-8"
           >
             <Icon
               className={cn(

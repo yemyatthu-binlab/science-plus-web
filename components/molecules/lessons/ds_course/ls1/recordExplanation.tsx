@@ -2,6 +2,7 @@ import HighLightText from "@/components/atoms/common/highlightText";
 import MultipleChoice from "@/components/atoms/common/multipleChoice";
 import SectionSwitchBtn from "@/components/atoms/common/sectionSwitchBtn";
 import ThemeText from "@/components/atoms/common/themeText";
+import { useLessonChallenge } from "@/store/useLessonChallenge";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -12,6 +13,7 @@ type Props = {
 const RecordExplanation = ({ handleClick }: Props) => {
   const [quesAState, setQuesAState] = useState(quesADefaultState);
   const [quesBState, setQuesBState] = useState(quesBDefaultState);
+  const { initialLessonChallenges: challenges } = useLessonChallenge();
 
   return (
     <div className="mx-5 pb-10">
@@ -48,9 +50,10 @@ const RecordExplanation = ({ handleClick }: Props) => {
       <MultipleChoice
         questionList={questionA}
         questionState={quesAState}
-        title="Where would you find Bea's phone number?"
+        title="What's Bea's relationship in this contact list?"
         setQuestionState={setQuesAState}
         questionUniqueId="#recordQA1"
+        challenge={challenges?.[1]}
       />
       <ThemeText className="mt-10">
         Consider another program that creates drawings based on information
@@ -75,9 +78,10 @@ const RecordExplanation = ({ handleClick }: Props) => {
       <MultipleChoice
         questionList={questionB}
         questionState={quesBState}
-        title="Where would you find Bea's phone number?"
+        title="Which of these could not be a field of the record Circle?"
         setQuestionState={setQuesBState}
         questionUniqueId="#recordQA2"
+        challenge={challenges?.[2]}
       />
 
       <ThemeText className="mt-10">
@@ -96,7 +100,7 @@ const RecordExplanation = ({ handleClick }: Props) => {
   );
 };
 
-const questionA: SciencePlus.Question[] = [
+const questionA: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "Coworker",
     value: "coworker",
@@ -115,7 +119,7 @@ const questionA: SciencePlus.Question[] = [
   },
 ];
 
-const questionB: SciencePlus.Question[] = [
+const questionB: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "Color",
     value: "color",

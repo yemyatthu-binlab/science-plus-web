@@ -1,5 +1,13 @@
 import { relations } from "drizzle-orm";
-import { boolean, integer, pgEnum, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  integer,
+  pgEnum,
+  pgTable,
+  serial,
+  text,
+  timestamp,
+} from "drizzle-orm/pg-core";
 
 export const courseCategory = pgTable("course_category", {
   id: serial("id").primaryKey(),
@@ -62,6 +70,7 @@ export const lessons = pgTable("lessons", {
       onDelete: "cascade",
     })
     .notNull(),
+  lessonRoute: text("lesson_route").notNull(),
   order: integer("order").notNull(),
 });
 

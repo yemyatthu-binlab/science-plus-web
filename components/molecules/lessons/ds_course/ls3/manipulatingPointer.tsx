@@ -207,7 +207,7 @@ const ManipulatingPointer = ({ handleClick: moveToNextSection }: Props) => {
   );
 };
 
-const questionA: SciencePlus.Question[] = [
+const questionA: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "2",
     value: "2",

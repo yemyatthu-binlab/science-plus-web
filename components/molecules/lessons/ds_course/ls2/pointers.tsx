@@ -237,7 +237,7 @@ const Pointer = ({ handleClick: moveToNextSection }: Props) => {
 
 export default Pointer;
 
-const questionA: SciencePlus.Question[] = [
+const questionA: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "1",
     value: "1",
@@ -256,7 +256,7 @@ const questionA: SciencePlus.Question[] = [
   },
 ];
 
-const questionB: SciencePlus.Question[] = [
+const questionB: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "7",
     value: "7",
@@ -279,7 +279,7 @@ const questionB: SciencePlus.Question[] = [
   },
 ];
 
-const questionC: SciencePlus.Question[] = [
+const questionC: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "0",
     value: "0",
@@ -298,7 +298,7 @@ const questionC: SciencePlus.Question[] = [
   },
 ];
 
-const questionD: SciencePlus.Question[] = [
+const questionD: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "7",
     value: "7",

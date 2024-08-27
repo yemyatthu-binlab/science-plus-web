@@ -9,6 +9,8 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { Toaster } from "sonner";
+import { HeartsModal } from "@/components/atoms/common/heartModal";
+import { PracticeModal } from "@/components/atoms/common/praticeModal";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -27,6 +29,8 @@ export default function RootLayout({
       <html lang="en">
         <body className={font.className}>
           <Toaster />
+          <HeartsModal />
+          <PracticeModal />
           {children}
         </body>
       </html>
