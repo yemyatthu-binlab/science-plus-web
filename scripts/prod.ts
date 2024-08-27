@@ -152,43 +152,43 @@ const main = async () => {
           ])
           .returning();
 
-        for (const challenge of challenges) {
-          if (challenge.order === 1) {
-            await db.insert(schema.challengeOptions).values([
-              {
-                challengeId: challenge.id,
-                correct: true,
-                text: "Challeenge 1 Option 1",
-                imageSrc: "",
-                audioSrc: "",
-              },
-            ]);
-          }
+        // for (const challenge of challenges) {
+        //   if (challenge.order === 1) {
+        //     await db.insert(schema.challengeOptions).values([
+        //       {
+        //         challengeId: challenge.id,
+        //         correct: true,
+        //         text: "Challeenge 1 Option 1",
+        //         imageSrc: "",
+        //         audioSrc: "",
+        //       },
+        //     ]);
+        //   }
 
-          if (challenge.order === 2) {
-            await db.insert(schema.challengeOptions).values([
-              {
-                challengeId: challenge.id,
-                correct: true,
-                text: "Callenge 2 Option 1",
-                imageSrc: "",
-                audioSrc: "",
-              },
-            ]);
-          }
+        //   if (challenge.order === 2) {
+        //     await db.insert(schema.challengeOptions).values([
+        //       {
+        //         challengeId: challenge.id,
+        //         correct: true,
+        //         text: "Callenge 2 Option 1",
+        //         imageSrc: "",
+        //         audioSrc: "",
+        //       },
+        //     ]);
+        //   }
 
-          if (challenge.order === 3) {
-            await db.insert(schema.challengeOptions).values([
-              {
-                challengeId: challenge.id,
-                correct: true,
-                text: "Callenge 3 Option 1",
-                imageSrc: "",
-                audioSrc: "",
-              },
-            ]);
-          }
-        }
+        //   if (challenge.order === 3) {
+        //     await db.insert(schema.challengeOptions).values([
+        //       {
+        //         challengeId: challenge.id,
+        //         correct: true,
+        //         text: "Callenge 3 Option 1",
+        //         imageSrc: "",
+        //         audioSrc: "",
+        //       },
+        //     ]);
+        //   }
+        // }
       }
     }
   } catch (error) {
