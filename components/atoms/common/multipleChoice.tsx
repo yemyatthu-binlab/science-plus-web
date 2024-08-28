@@ -11,6 +11,7 @@ import { useAudio } from "react-use";
 import { reduceHearts } from "@/actions/user-progress";
 import { useHeartsModal } from "@/store/use-hearts-modal";
 import { useLessonActions } from "@/store/useLessonChallenge";
+import useAnswerSubmit from "@/hook/custom/useAnswerSubmit";
 
 type Props = {
   questionList: SciencePlus.MultiChoiceQuestion[];
@@ -42,6 +43,9 @@ const MultipleChoice = ({
   });
   const { open: openHeartsModal } = useHeartsModal();
   const { reduceHeart } = useLessonActions();
+  const { updateChallengeAsComplete, decreaseHeartCount } = useAnswerSubmit({
+    challengeId: challenge?.id as number,
+  });
 
   const handleAnsChange = (value: string) => {
     if (!questionState.isAnswered) {
@@ -58,34 +62,11 @@ const MultipleChoice = ({
       }));
       if (questionState.value == questionState.correctAnswer && challenge) {
         void correctControls.play();
-        startTransition(() => {
-          upsertChallengeProgress(challenge.id)
-            .then((response) => {
-              console.log("response::", response);
-              // if (initialPercentage === 100) {
-              //   setHearts((prev) => Math.min(prev + 1, MAX_HEARTS));
-              // }
-            })
-            .catch(() =>
-              toast.error("Something went wrong. Please try again.")
-            );
-        });
+        !challenge.completed && updateChallengeAsComplete();
       }
       if (questionState.value !== questionState.correctAnswer && challenge) {
         void incorrectControls.play();
-        reduceHeart();
-        startTransition(() => {
-          reduceHearts(challenge.id)
-            .then((response) => {
-              if (response?.error === "hearts") {
-                openHeartsModal();
-                return;
-              }
-            })
-            .catch(() =>
-              toast.error("Something went wrong. Please try again.")
-            );
-        });
+        !challenge.completed && decreaseHeartCount();
       }
     }
   };

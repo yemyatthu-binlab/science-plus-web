@@ -4,16 +4,27 @@ import SectionSwitchBtn from "@/components/atoms/common/sectionSwitchBtn";
 import ThemeText from "@/components/atoms/common/themeText";
 import { useLessonChallenge } from "@/store/useLessonChallenge";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   handleClick: () => void;
 };
 
-const RecordExplanation = ({ handleClick }: Props) => {
+const RecordExplanation = ({ handleClick: moveToNextSection }: Props) => {
   const [quesAState, setQuesAState] = useState(quesADefaultState);
   const [quesBState, setQuesBState] = useState(quesBDefaultState);
   const { initialLessonChallenges: challenges } = useLessonChallenge();
+  const [showSectionSwitchBtn, setShowSectionSwitchBtn] = useState(false);
+  const [lessonSegment, setLessonSegment] = useState(1);
+
+  useEffect(() => {
+    if (lessonSegment == 1) {
+      setShowSectionSwitchBtn(quesAState.isAnswered);
+    }
+    if (lessonSegment == 2) {
+      setShowSectionSwitchBtn(quesBState.isAnswered);
+    }
+  }, [quesAState, quesBState]);
 
   return (
     <div className="mx-5 pb-10">
@@ -53,49 +64,60 @@ const RecordExplanation = ({ handleClick }: Props) => {
         title="What's Bea's relationship in this contact list?"
         setQuestionState={setQuesAState}
         questionUniqueId="#recordQA1"
-        challenge={challenges?.[1]}
-      />
-      <ThemeText className="mt-10">
-        Consider another program that creates drawings based on information
-        about a circle to be drawn on a grid:
-      </ThemeText>
-
-      <Image
-        src={"/array_explanation3.png"}
-        alt={"Record Explanation"}
-        height={"176"}
-        width={"540"}
-        className="mt-5"
-      />
-      <ThemeText className="mt-3">
-        We want to create a record to represent a{" "}
-        <span className="bg-gray-200 p-1 text-sm rounded-sm py-1 px-2 leading-7 ">
-          Circle
-        </span>
-        .
-      </ThemeText>
-
-      <MultipleChoice
-        questionList={questionB}
-        questionState={quesBState}
-        title="Which of these could not be a field of the record Circle?"
-        setQuestionState={setQuesBState}
-        questionUniqueId="#recordQA2"
         challenge={challenges?.[2]}
       />
+      {lessonSegment >= 2 && (
+        <>
+          <ThemeText className="mt-10">
+            Consider another program that creates drawings based on information
+            about a circle to be drawn on a grid:
+          </ThemeText>
 
-      <ThemeText className="mt-10">
-        We&apos;ve seen how records can store data in different contexts. To
-        organize and manipulate records, we&apos;ll need to investigate how
-        they&apos;re stored in computer memory.
-      </ThemeText>
+          <Image
+            src={"/array_explanation3.png"}
+            alt={"Record Explanation"}
+            height={"176"}
+            width={"540"}
+            className="mt-5"
+          />
+          <ThemeText className="mt-3">
+            We want to create a record to represent a{" "}
+            <span className="bg-gray-200 p-1 text-sm rounded-sm py-1 px-2 leading-7 ">
+              Circle
+            </span>
+            .
+          </ThemeText>
 
-      <SectionSwitchBtn
-        title="Review and reflect"
-        className="mt-10 relative"
-        buttonWrapperStyle="mx-0"
-        handleClick={handleClick}
-      />
+          <MultipleChoice
+            questionList={questionB}
+            questionState={quesBState}
+            title="Which of these could not be a field of the record Circle?"
+            setQuestionState={setQuesBState}
+            questionUniqueId="#recordQA2"
+            challenge={challenges?.[3]}
+          />
+
+          {quesBState.isAnswered && (
+            <ThemeText className="mt-10">
+              We&apos;ve seen how records can store data in different contexts.
+              To organize and manipulate records, we&apos;ll need to investigate
+              how they&apos;re stored in computer memory.
+            </ThemeText>
+          )}
+        </>
+      )}
+      {showSectionSwitchBtn && (
+        <SectionSwitchBtn
+          title="Continue"
+          className="mt-10 relative"
+          buttonWrapperStyle="mx-0"
+          handleClick={() => {
+            lessonSegment < 2
+              ? setLessonSegment(lessonSegment + 1)
+              : moveToNextSection();
+          }}
+        />
+      )}
     </div>
   );
 };

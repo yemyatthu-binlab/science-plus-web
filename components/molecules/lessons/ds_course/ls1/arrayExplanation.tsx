@@ -7,11 +7,13 @@ import UnOrderList from "@/components/atoms/common/unOrderList";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import useAnswerSubmit from "@/hook/custom/useAnswerSubmit";
 import { cn } from "@/lib/utils";
 import { useLessonChallenge } from "@/store/useLessonChallenge";
 import { ClassValue } from "clsx";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
+import { useAudio } from "react-use";
 
 type Props = {
   handleClick: () => void;
@@ -20,10 +22,37 @@ type Props = {
 const ArrayExplanation = ({ handleClick }: Props) => {
   const [qa1, setQa1] = useState(quesAdefault);
   const [qa2, setQa2] = useState(quesBdefault);
+  const [correctAudio, _c, correctControls] = useAudio({ src: "/correct.wav" });
+  const [incorrectAudio, _i, incorrectControls] = useAudio({
+    src: "/incorrect.wav",
+  });
   const { initialLessonChallenges: challenges } = useLessonChallenge();
+  const { updateChallengeAsComplete, decreaseHeartCount } = useAnswerSubmit({
+    challengeId: challenges?.[0]?.id as number,
+  });
+
+  const handleQA1Submit = () => {
+    if (qa1.value) {
+      setQa1((qa1) => ({
+        ...qa1,
+        isAnswered: true,
+        isCorrect: qa1.value == qa1.correctAnswer,
+      }));
+      if (qa1.value == qa1.correctAnswer && challenges?.[0].id) {
+        void correctControls.play();
+        !challenges?.[0].completed && updateChallengeAsComplete();
+      }
+      if (qa1.value !== qa1.correctAnswer && challenges?.[0].id) {
+        void incorrectControls.play();
+        !challenges?.[0].completed && decreaseHeartCount();
+      }
+    }
+  };
 
   return (
     <div className="mx-5 pb-10">
+      {incorrectAudio}
+      {correctAudio}
       <ThemeText variant={"title"}>Arrays</ThemeText>
       <ThemeText className="my-5">
         Array ဟာ linear data structure type တစ်မျိုးဖြစ်ပြီး သူ့ထဲမှာ
@@ -124,15 +153,7 @@ const ArrayExplanation = ({ handleClick }: Props) => {
           />
           {!qa1.isAnswered && (
             <Button
-              onClick={() => {
-                if (qa1.value) {
-                  setQa1((qa1) => ({
-                    ...qa1,
-                    isAnswered: true,
-                    isCorrect: qa1.value == qa1.correctAnswer,
-                  }));
-                }
-              }}
+              onClick={handleQA1Submit}
               variant="black"
               className="capitalize w-auto mt-5"
             >
@@ -144,132 +165,147 @@ const ArrayExplanation = ({ handleClick }: Props) => {
           <ThemeText className="mt-5 text-sm">Ans: -2</ThemeText>
         )}
       </div>
-      <ThemeText className="mt-14">
-        ကျွန်တော်တို့ဟာ ကျွန်တော်တို့ရေးတဲ့ code တွေ အကောင်းဆုံးနဲ့ အမြန်ဆုံး
-        execute နိုင်ဖို့ data strucutre ကို ရွေးချယ်တဲ့ နေရာမှာ
-        အချက်နှစ်ချက်ကို အဓိက ကြည့်ပြီး ရွေးချယ်ရပါတယ်။ အဲ့တာကတော့
-      </ThemeText>
-      <UnOrderList
-        className="mt-5"
-        title="ကျွန်တော်တို့ သိမ်းမည့် data တွေက ဘယ်လိုပုံစံမျိုးလဲ?"
-      />
-      <UnOrderList title="ကျွန်တော်တို့ ရေးမည့် programက ဘာကိုလုပ်ချင်တာလဲ?" />
-      <ThemeText>
-        ထိုအချက်များ အပေါ် မူတည်ပြီး အသင့်တော်ဆုံးဖြစ်မည့် data strucutre ကို
-        ရွေးချယ်ရမှာဖြစ်ပါတယ်။
-        <br />
-        <br />
-        အထက်တွင်ဖော်ပြခဲ့သော ဉပမာမှာအရဆိုလျှင် ကျွန်တော်တို့ သိမ်းချင်တဲ့ data က
-        student တွေရဲ့ PE score တွေဖြစ်ပြီး၊ ကျွန်တော်တို့ program က
-        ကျောင်းသားတစ်ယောက်ချင်းစီရဲ့ monthly PE result တွေကို update
-        လုပ်ချင်တာဖြစ်ပါတယ်။
-        <br />
-        <br />
-        သိမ်းချင်တဲ့ data ကလည်း ရမှတ် တစ်ခုတည်းဖြစ်ပြီး student တွေအတွက်လည်း
-        roll no 1 student ရဲ့ data ကို <HighLightText title="Array index 0" />,
-        roll 2 student ရဲ့ data ကို <HighLightText title="Array index 1" /> ထဲ
-        သိမ်း။အဲလိုနည်းဖြင့် ကျွန်တော်တို့ program အတွက် array data structure က
-        အဆင်ပြေဆုံးဖြစ်သွားပါတယ်။
-      </ThemeText>
-      <Image
-        src={"/array_explanation3.png"}
-        alt={"Array Explanation 3"}
-        height={"191"}
-        width={"400"}
-        className="mt-5"
-      />
-      <ThemeText className="mt-14">
-        ဒီတစ်ခါမှာတော့ ကျောင်းသားရမှတ်ကို သိမ်းတာမျိုးမဟုတ်ဘဲ Window တို့ Mac
-        တို့မှာ built in ပါလာတဲ့ paint တို့ freeform တို့လို 2D ပုံတွေဆွဲတဲ့
-        application program တစ်ခုအနေနဲ့ စဉ်းစားကြည့်ကြရအောင်။
-        <br /> <br />
-        အဲ့တော့ user screen ပေါ်မှာဆွဲလိုက်သမျှ ပုံတွေကို data အနေနဲ့
-        ပြန်သိမ်းမယ်ဆို 2D canvas တစ်ခုအတွက် အနည်းဆုံး
-        ဒီအချက်တွေလိုမှာဖြစ်ပါတယ်။ စဆွဲတဲ့ အမှတ်ရဲ့ x coordinate, y coordinate၊
-        ဆုံးမှတ်ရဲ့ x coordinate, y coordinate၊ ဆွဲလိုက်တဲ့မျဉ်းရဲ့အထူ stroke
-        width၊ မျဉ်းအရောင် stroke color၊ အထဲကနောက်ခံ color စသည်ဖြင့် 2D convas
-        တစ်ခုအတွက် data တွေအများကြီးလိုမှာဖြစ်ပါတယ်။
-        <br /> <br />
-        ဆိုတော့ ကျွန်တော်တို့ရေးမည့် program ရဲ့ အဓိကရည်ရွယ်ချက်က user screen
-        ပေါ် လျှောက်ခြစ်ထားတဲ့ 2D convas တွေအားလုံးကို သိမ်းထားပြီး user
-        နောက်တစ်ကြိမ် ပြန်ဖွင့်တဲ့အခါ screen ပေါ်မှာ ဆွဲထားသမျှတွေကို
-        ပြန်ပြချင်တာမျိုးဖြစ်ပါတယ်။ ဒီလို အခြေအနေမျိုးမှာ array data structure
-        တစ်ခုထဲ သုံးရုံနဲ့ အဆင်မပြေလောက်တော့ဘူးဆိုတာ သင်လည်းရိပ်မိမှာဖြစ်ပါတယ်။
-        <br /> <br />
-      </ThemeText>
-      <Image
-        src={"/array_explanation4.png"}
-        alt={"Array Explanation 4"}
-        height={"191"}
-        width={"300"}
-        className="mt-10 mx-auto"
-      />
-      <ThemeText className="mt-14">
-        နောက်ထပ် problem တစ်ခုနဲ့တွေးကြည့်ကြရအောင်။ phone တွေမှာ default ပါတဲ့
-        contact application လိုမျိုးတစ်ခုရေးတယ်ဆိုပါစို့။ကျွန်တော်တို့ရဲ့ အဓိက
-        data ဖြစ်တဲ့ contact မှာ အနည်းဆုံး contact မှာ phone number ရယ် name ရယ်
-        လိုမှာဖြစ်ပါတယ်။
-        <br />
-        <br />
-        ဆိုတော့ ကျွန်တော်တို့ contact program လေးက contact အသစ်တွေ create မယ်၊
-        contact list တွေပြမယ်၊ မှတ်ပြီးသား contact တွေကို name (or) phone number
-        ကိုသုံးပြီး ရှာလို့ရမယ်ဆိုပါစို့။ <br />
-        <br />
-        အဲ့အတွက် contact အသစ် create တဲ့အခါ ထို contact တွေကို သိမ်းဖို့ data
-        structure ကို ဘယ်လိုမျိုးစီမံသင့်လဲ တွေးကြည့်လိုက်ရအောင်။ တကယ်လို့ array
-        data structure ကိုပဲသုံးမယ်ဆို ကျွန်တော်တို့ parallel array တစ်ခုကို
-        ဒီလိုcreate လို့ရပါတယ်။
-      </ThemeText>
-      <Image
-        src={"/array_explanation5.png"}
-        alt={"Array Explanation 5"}
-        height={"154"}
-        width={"540"}
-        className="mt-10 mx-auto"
-      />
-      <ThemeText className="mt-10">
-        Name အတွက် array တစ်ခုနဲ့ Phone အတွက် array တစ်ခု သတ်မှတ်ပြီး၊ ဉပမာ -
-        Ann&apos;s phone number လိုချင်လျှင် Ann ရဲ့ index ကိုရှာပြီး ထို index
-        ရဲ့ phone array ထဲက Phone[index] နဲ့ သွားထုတ်လိုက်လျှင် Ann&apos;s phone
-        number ကိုရပြီပဲဖြစ်ပါတယ်။
-      </ThemeText>
-      <MultipleChoice
-        questionList={qurstionA}
-        questionState={qa2}
-        title="ထို့နည်းတူ Bea's phone number ကိုလိုချင်လျှင် Array နှစ်ခုထဲက  ဘယ်Array ထဲမှာ ဘယ်index နဲ့ access လုပ်ရမည်နည်း?"
-        setQuestionState={setQa2}
-        questionUniqueId="#arrayQA2"
-        challenge={challenges?.[0]}
-      />
-      <ThemeText className="mt-14">
-        ဒါဟာ phone number နဲ့ name နှစ်ခုထဲဆို အဆင်ပြေပင်မဲ့ တစ်ခြား fields
-        (email, profile image, zip code) တွေ ထပ်တိုးလာမည်ဆို linear ထားရမဲ့
-        Array အရေအတွက်တွေများလာပြီး contact တစ်ခုရဲ့ data ကို access လုပ်ဖို့နဲ့
-        ရှာဖို့အတွက် ရေးကမဲ့ lines of code လည်းများလာမှာဖြစ်ပြီး read လုပ်ရမည့်
-        time လည်းများလွန်းတာကြောင့် performance အရလည်း အဆင်ပြေမှာမဟုတ်ပါဘူး။
-      </ThemeText>
-      <ThemeText className="mt-5">
-        drawing ဉပမာမှာဟာလည်း ထိုနည်းတူပါပဲ။ Linear Array နဲ့ထားမယ်ဆို canvas 2D
-        တစ်ခုအတွက် သုံးရမဲ့ Array အရေအတွက်ဟာ အများကြီး ဖြစ်နေမှာဖြစ်ပါတယ်။
-        ဆိုတော့ ဒီ problem နှစ်ခုအတွက် Beginner level မှာ
-        အကောင်းဆုံးဖြစ်နိုင်မဲ့ data structure ဟာ ဘာများဖြစ်နိုင်မလဲ ?
-        <br />
-        <br />
-        အဖြေကတော့ ရှင်းပါတယ်။ Array အခန်းတစ်ခုထဲမှာ value တစ်ခုထဲ မထည့်ဘဲ လိုတဲ့
-        data တွေ အားလုံး‌ပေါင်းထည့်လိုက်မှာ ဖြစ်ပါတယ်။ ဉပမာ - Arary ၏
-        တစ်ခန်းချင်းစီတိုင်းမှာ ( name, contact, email, zip) စသည်ဖြင့် data
-        အားလုံးကို ပေါင်းထည့်လိုက်မှာဖြစ်ပါတယ်။ Drawing problem အတွက်လည်း
-        ထိုနည်းတူ (Start X, Start Y, End X, End Y, Stroke Width, Stroke Color)
-        စသဖြင့် အားလုံးကို တစ်ခန်းချင်းစီမှာ လိုက်ထည့်ရမှာဖြစ်ပါတယ်။
-        ထိုသို့ထည့်ဖို့အတွက် ကျွန်တော်တို့ဟာ နောက် data structure တစ်ခုကို
-        သိထားဖို့လိုလာပါတယ်။ အဲ့တာဟာ Record ပဲဖြစ်ပါတယ်။
-      </ThemeText>
-      <SectionSwitchBtn
-        title="Continue"
-        className="mt-10 relative"
-        buttonWrapperStyle="mx-0"
-        handleClick={handleClick}
-      />
+      {qa1.isAnswered && (
+        <>
+          <ThemeText className="mt-14">
+            ကျွန်တော်တို့ဟာ ကျွန်တော်တို့ရေးတဲ့ code တွေ အကောင်းဆုံးနဲ့
+            အမြန်ဆုံး execute နိုင်ဖို့ data strucutre ကို ရွေးချယ်တဲ့ နေရာမှာ
+            အချက်နှစ်ချက်ကို အဓိက ကြည့်ပြီး ရွေးချယ်ရပါတယ်။ အဲ့တာကတော့
+          </ThemeText>
+          <UnOrderList
+            className="mt-5"
+            title="ကျွန်တော်တို့ သိမ်းမည့် data တွေက ဘယ်လိုပုံစံမျိုးလဲ?"
+          />
+          <UnOrderList title="ကျွန်တော်တို့ ရေးမည့် programက ဘာကိုလုပ်ချင်တာလဲ?" />
+          <ThemeText>
+            ထိုအချက်များ အပေါ် မူတည်ပြီး အသင့်တော်ဆုံးဖြစ်မည့် data strucutre
+            ကို ရွေးချယ်ရမှာဖြစ်ပါတယ်။
+            <br />
+            <br />
+            အထက်တွင်ဖော်ပြခဲ့သော ဉပမာမှာအရဆိုလျှင် ကျွန်တော်တို့ သိမ်းချင်တဲ့
+            data က student တွေရဲ့ PE score တွေဖြစ်ပြီး၊ ကျွန်တော်တို့ program က
+            ကျောင်းသားတစ်ယောက်ချင်းစီရဲ့ monthly PE result တွေကို update
+            လုပ်ချင်တာဖြစ်ပါတယ်။
+            <br />
+            <br />
+            သိမ်းချင်တဲ့ data ကလည်း ရမှတ် တစ်ခုတည်းဖြစ်ပြီး student တွေအတွက်လည်း
+            roll no 1 student ရဲ့ data ကို{" "}
+            <HighLightText title="Array index 0" />, roll 2 student ရဲ့ data ကို{" "}
+            <HighLightText title="Array index 1" /> ထဲ သိမ်း။အဲလိုနည်းဖြင့်
+            ကျွန်တော်တို့ program အတွက် array data structure က
+            အဆင်ပြေဆုံးဖြစ်သွားပါတယ်။
+          </ThemeText>
+          <Image
+            src={"/array_explanation3.png"}
+            alt={"Array Explanation 3"}
+            height={"191"}
+            width={"400"}
+            className="mt-5"
+          />
+          <ThemeText className="mt-14">
+            ဒီတစ်ခါမှာတော့ ကျောင်းသားရမှတ်ကို သိမ်းတာမျိုးမဟုတ်ဘဲ Window တို့
+            Mac တို့မှာ built in ပါလာတဲ့ paint တို့ freeform တို့လို 2D
+            ပုံတွေဆွဲတဲ့ application program တစ်ခုအနေနဲ့ စဉ်းစားကြည့်ကြရအောင်။
+            <br /> <br />
+            အဲ့တော့ user screen ပေါ်မှာဆွဲလိုက်သမျှ ပုံတွေကို data အနေနဲ့
+            ပြန်သိမ်းမယ်ဆို 2D canvas တစ်ခုအတွက် အနည်းဆုံး
+            ဒီအချက်တွေလိုမှာဖြစ်ပါတယ်။ စဆွဲတဲ့ အမှတ်ရဲ့ x coordinate, y
+            coordinate၊ ဆုံးမှတ်ရဲ့ x coordinate, y coordinate၊
+            ဆွဲလိုက်တဲ့မျဉ်းရဲ့အထူ stroke width၊ မျဉ်းအရောင် stroke color၊
+            အထဲကနောက်ခံ color စသည်ဖြင့် 2D convas တစ်ခုအတွက် data
+            တွေအများကြီးလိုမှာဖြစ်ပါတယ်။
+            <br /> <br />
+            ဆိုတော့ ကျွန်တော်တို့ရေးမည့် program ရဲ့ အဓိကရည်ရွယ်ချက်က user
+            screen ပေါ် လျှောက်ခြစ်ထားတဲ့ 2D convas တွေအားလုံးကို သိမ်းထားပြီး
+            user နောက်တစ်ကြိမ် ပြန်ဖွင့်တဲ့အခါ screen ပေါ်မှာ ဆွဲထားသမျှတွေကို
+            ပြန်ပြချင်တာမျိုးဖြစ်ပါတယ်။ ဒီလို အခြေအနေမျိုးမှာ array data
+            structure တစ်ခုထဲ သုံးရုံနဲ့ အဆင်မပြေလောက်တော့ဘူးဆိုတာ
+            သင်လည်းရိပ်မိမှာဖြစ်ပါတယ်။
+            <br /> <br />
+          </ThemeText>
+          <Image
+            src={"/array_explanation4.png"}
+            alt={"Array Explanation 4"}
+            height={"191"}
+            width={"300"}
+            className="mt-10 mx-auto"
+          />
+          <ThemeText className="mt-14">
+            နောက်ထပ် problem တစ်ခုနဲ့တွေးကြည့်ကြရအောင်။ phone တွေမှာ default
+            ပါတဲ့ contact application
+            လိုမျိုးတစ်ခုရေးတယ်ဆိုပါစို့။ကျွန်တော်တို့ရဲ့ အဓိက data ဖြစ်တဲ့
+            contact မှာ အနည်းဆုံး contact မှာ phone number ရယ် name ရယ်
+            လိုမှာဖြစ်ပါတယ်။
+            <br />
+            <br />
+            ဆိုတော့ ကျွန်တော်တို့ contact program လေးက contact အသစ်တွေ create
+            မယ်၊ contact list တွေပြမယ်၊ မှတ်ပြီးသား contact တွေကို name (or)
+            phone number ကိုသုံးပြီး ရှာလို့ရမယ်ဆိုပါစို့။ <br />
+            <br />
+            အဲ့အတွက် contact အသစ် create တဲ့အခါ ထို contact တွေကို သိမ်းဖို့
+            data structure ကို ဘယ်လိုမျိုးစီမံသင့်လဲ တွေးကြည့်လိုက်ရအောင်။
+            တကယ်လို့ array data structure ကိုပဲသုံးမယ်ဆို ကျွန်တော်တို့ parallel
+            array တစ်ခုကို ဒီလိုcreate လို့ရပါတယ်။
+          </ThemeText>
+          <Image
+            src={"/array_explanation5.png"}
+            alt={"Array Explanation 5"}
+            height={"154"}
+            width={"540"}
+            className="mt-10 mx-auto"
+          />
+          <ThemeText className="mt-10">
+            Name အတွက် array တစ်ခုနဲ့ Phone အတွက် array တစ်ခု သတ်မှတ်ပြီး၊ ဉပမာ
+            - Ann&apos;s phone number လိုချင်လျှင် Ann ရဲ့ index ကိုရှာပြီး ထို
+            index ရဲ့ phone array ထဲက Phone[index] နဲ့ သွားထုတ်လိုက်လျှင်
+            Ann&apos;s phone number ကိုရပြီပဲဖြစ်ပါတယ်။
+          </ThemeText>
+          <MultipleChoice
+            questionList={qurstionA}
+            questionState={qa2}
+            title="ထို့နည်းတူ Bea's phone number ကိုလိုချင်လျှင် Array နှစ်ခုထဲက  ဘယ်Array ထဲမှာ ဘယ်index နဲ့ access လုပ်ရမည်နည်း?"
+            setQuestionState={setQa2}
+            questionUniqueId="#arrayQA2"
+            challenge={challenges?.[1]}
+          />
+          {qa2.isAnswered && (
+            <>
+              <ThemeText className="mt-14">
+                ဒါဟာ phone number နဲ့ name နှစ်ခုထဲဆို အဆင်ပြေပင်မဲ့ တစ်ခြား
+                fields (email, profile image, zip code) တွေ ထပ်တိုးလာမည်ဆို
+                linear ထားရမဲ့ Array အရေအတွက်တွေများလာပြီး contact တစ်ခုရဲ့ data
+                ကို access လုပ်ဖို့နဲ့ ရှာဖို့အတွက် ရေးကမဲ့ lines of code
+                လည်းများလာမှာဖြစ်ပြီး read လုပ်ရမည့် time လည်းများလွန်းတာကြောင့်
+                performance အရလည်း အဆင်ပြေမှာမဟုတ်ပါဘူး။
+              </ThemeText>
+              <ThemeText className="mt-5">
+                drawing ဉပမာမှာဟာလည်း ထိုနည်းတူပါပဲ။ Linear Array နဲ့ထားမယ်ဆို
+                canvas 2D တစ်ခုအတွက် သုံးရမဲ့ Array အရေအတွက်ဟာ အများကြီး
+                ဖြစ်နေမှာဖြစ်ပါတယ်။ ဆိုတော့ ဒီ problem နှစ်ခုအတွက် Beginner
+                level မှာ အကောင်းဆုံးဖြစ်နိုင်မဲ့ data structure ဟာ
+                ဘာများဖြစ်နိုင်မလဲ ?
+                <br />
+                <br />
+                အဖြေကတော့ ရှင်းပါတယ်။ Array အခန်းတစ်ခုထဲမှာ value တစ်ခုထဲ
+                မထည့်ဘဲ လိုတဲ့ data တွေ အားလုံး‌ပေါင်းထည့်လိုက်မှာ ဖြစ်ပါတယ်။
+                ဉပမာ - Arary ၏ တစ်ခန်းချင်းစီတိုင်းမှာ ( name, contact, email,
+                zip) စသည်ဖြင့် data အားလုံးကို ပေါင်းထည့်လိုက်မှာဖြစ်ပါတယ်။
+                Drawing problem အတွက်လည်း ထိုနည်းတူ (Start X, Start Y, End X,
+                End Y, Stroke Width, Stroke Color) စသဖြင့် အားလုံးကို
+                တစ်ခန်းချင်းစီမှာ လိုက်ထည့်ရမှာဖြစ်ပါတယ်။ ထိုသို့ထည့်ဖို့အတွက်
+                ကျွန်တော်တို့ဟာ နောက် data structure တစ်ခုကို
+                သိထားဖို့လိုလာပါတယ်။ အဲ့တာဟာ Record ပဲဖြစ်ပါတယ်။
+              </ThemeText>
+              <SectionSwitchBtn
+                title="Continue"
+                className="mt-10 relative"
+                buttonWrapperStyle="mx-0"
+                handleClick={handleClick}
+              />
+            </>
+          )}
+        </>
+      )}
     </div>
   );
 };

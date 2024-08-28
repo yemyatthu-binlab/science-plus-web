@@ -3,6 +3,7 @@ import HighLightText from "@/components/atoms/common/highlightText";
 import MultipleChoice from "@/components/atoms/common/multipleChoice";
 import SectionSwitchBtn from "@/components/atoms/common/sectionSwitchBtn";
 import ThemeText from "@/components/atoms/common/themeText";
+import { useLessonChallenge } from "@/store/useLessonChallenge";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -16,7 +17,10 @@ const Pointer = ({ handleClick: moveToNextSection }: Props) => {
   const [quesCState, setQuesCState] = useState(quesCDefaultState);
   const [quesDState, setQuesDState] = useState(quesDDefaultState);
   const [showSectionSwitchBtn, setShowSectionSwitchBtn] = useState(false);
+  const { initialLessonChallenges: challenges } = useLessonChallenge();
   const [lessonSegment, setLessonSegment] = useState(1);
+
+  console.log("init::", challenges);
 
   useEffect(() => {
     if (lessonSegment == 1) {
@@ -100,6 +104,7 @@ const Pointer = ({ handleClick: moveToNextSection }: Props) => {
         }
         setQuestionState={setQuesAState}
         questionUniqueId="#memoryAddressQA1"
+        challenge={challenges?.[1]}
       />
       {quesAState.isAnswered && (
         <ThemeText className="mt-10">
@@ -139,6 +144,7 @@ const Pointer = ({ handleClick: moveToNextSection }: Props) => {
               </div>
             }
             setQuestionState={setQuesBState}
+            challenge={challenges?.[2]}
             questionUniqueId="#memoryAddressQA2"
           />
           {quesBState.isAnswered && (
@@ -180,6 +186,7 @@ const Pointer = ({ handleClick: moveToNextSection }: Props) => {
               </div>
             }
             setQuestionState={setQuesCState}
+            challenge={challenges?.[3]}
             questionUniqueId="#memoryAddressQA3"
           />
           {quesCState.isAnswered && (
@@ -207,6 +214,7 @@ const Pointer = ({ handleClick: moveToNextSection }: Props) => {
                   </div>
                 }
                 setQuestionState={setQuesDState}
+                challenge={challenges?.[4]}
                 questionUniqueId="#memoryAddressQA3"
               />
               {quesDState.isAnswered && (

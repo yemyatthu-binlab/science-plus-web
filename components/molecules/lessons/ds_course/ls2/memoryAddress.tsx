@@ -3,6 +3,7 @@ import HighLightText from "@/components/atoms/common/highlightText";
 import MultipleChoice from "@/components/atoms/common/multipleChoice";
 import SectionSwitchBtn from "@/components/atoms/common/sectionSwitchBtn";
 import ThemeText from "@/components/atoms/common/themeText";
+import { useLessonChallenge } from "@/store/useLessonChallenge";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -12,6 +13,7 @@ type Props = {
 
 const MemoryAddress = ({ handleClick }: Props) => {
   const [quesAState, setQuestA] = useState(quesADefaultState);
+  const { initialLessonChallenges: challenges } = useLessonChallenge();
 
   return (
     <div className="mx-5 pb-10">
@@ -80,6 +82,7 @@ const MemoryAddress = ({ handleClick }: Props) => {
         questionState={quesAState}
         title="After creating the following contact, what's the value of
             new_contact?"
+        challenge={challenges?.[0]}
         customHeader={
           <div>
             <ThemeText>
