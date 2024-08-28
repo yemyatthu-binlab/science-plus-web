@@ -11,6 +11,7 @@ import {
 import { Toaster } from "sonner";
 import { HeartsModal } from "@/components/atoms/common/heartModal";
 import { PracticeModal } from "@/components/atoms/common/praticeModal";
+import "highlight.js/styles/stackoverflow-dark.css";
 
 const font = Nunito({ subsets: ["latin"] });
 

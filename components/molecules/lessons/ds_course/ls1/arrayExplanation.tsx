@@ -45,7 +45,7 @@ const ArrayExplanation = ({ handleClick }: Props) => {
         <br />
         <br />
       </ThemeText>
-      <HighLightCode codeString="const peResultList = [7, 0, -2, 10, 6]" />
+      <HighLightCode codeString="const peResultList = [7, 0, -2, 10, 6];" />
       <ThemeText className="my-10">
         နောက်ထပ် ကျောင်းသားတွေအတွက်ထပ်ထည့်ချင်ရင်လည်း
       </ThemeText>
