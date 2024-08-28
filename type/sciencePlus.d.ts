@@ -1,12 +1,12 @@
 declare namespace SciencePlus {
-  type QuestionSructure = {
+  type MultiChoiceAnsSructure = {
     value: string;
     correctAnswer: string;
     isAnswered: boolean;
     isCorrect: boolean;
   };
 
-  type Question = {
+  type MultiChoiceQuestion = {
     label: string;
     value: string;
   };

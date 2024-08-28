@@ -1,3 +1,4 @@
+import DragAndDrop from "@/components/atoms/common/dragAndDrop";
 import HighLightText from "@/components/atoms/common/highlightText";
 import MultipleChoice from "@/components/atoms/common/multipleChoice";
 import SectionSwitchBtn from "@/components/atoms/common/sectionSwitchBtn";
@@ -307,7 +308,7 @@ const ManipulatingRecord = ({ handleClick: moveToNextSection }: Props) => {
           <ThemeText className="mb-5">
             You don&apos;t have to use all of the commands.
           </ThemeText>
-          <div className="w-full h-[400px] bg-gray-100 rounded-md"></div>
+          <DragAndDrop />
           <ThemeText className="mt-10">
             When setting and resetting records in memory, it helps to consider
             what the underlying picture looks like in memory.
@@ -332,7 +333,7 @@ const ManipulatingRecord = ({ handleClick: moveToNextSection }: Props) => {
 
 export default ManipulatingRecord;
 
-const questionA: SciencePlus.Question[] = [
+const questionA: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "There will be arrows pointing to Don's and Ann's records.",
     value: "1",
@@ -351,7 +352,7 @@ const questionA: SciencePlus.Question[] = [
   },
 ];
 
-const questionB: SciencePlus.Question[] = [
+const questionB: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "First A, then B",
     value: "1",
@@ -370,7 +371,7 @@ const questionB: SciencePlus.Question[] = [
   },
 ];
 
-const questionC: SciencePlus.Question[] = [
+const questionC: SciencePlus.MultiChoiceQuestion[] = [
   {
     label: "First Ann, then Bea",
     value: "1",

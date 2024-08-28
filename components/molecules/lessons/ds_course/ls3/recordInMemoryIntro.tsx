@@ -1,3 +1,4 @@
+import DragAndDrop from "@/components/atoms/common/dragAndDrop";
 import SectionSwitchBtn from "@/components/atoms/common/sectionSwitchBtn";
 import ThemeText from "@/components/atoms/common/themeText";
 import Image from "next/image";
@@ -22,6 +23,7 @@ const RecordInMemoryIntro = ({ handleClick }: Props) => {
         In this lesson, we&apos;ll investigate how data structures are stored in
         memory.
       </ThemeText>
+      <DragAndDrop />
       <SectionSwitchBtn
         title="Start lesson"
         className="relative mt-10"

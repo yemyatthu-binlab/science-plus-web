@@ -1,8 +1,11 @@
+"use client";
+
 import { InfinityIcon, X } from "lucide-react";
 import Image from "next/image";
 
 import { Progress } from "@/components/ui/progress";
 import { useExitModal } from "@/store/use-exit-modal";
+import { useRouter } from "next/navigation";
 
 type HeaderProps = {
   hearts: number;
@@ -15,13 +18,15 @@ export const HeaderProgress = ({
   percentage,
   hasActiveSubscription,
 }: HeaderProps) => {
-  const { open } = useExitModal();
+  const router = useRouter();
 
   return (
     <div className="shadow-md flex flex-row  pb-5">
       <header className="flex w-full items-center justify-between mx-4 pt-[20px] lg:pt-[30px]">
         <X
-          onClick={open}
+          onClick={() => {
+            router.push("/learn");
+          }}
           className="cursor-pointer text-slate-500 transition hover:opacity-75"
         />
 

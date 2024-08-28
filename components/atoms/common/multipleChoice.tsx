@@ -3,17 +3,25 @@ import ThemeText from "./themeText";
 import { cn } from "@/lib/utils";
 import { ClassValue } from "clsx";
 import { Button } from "@/components/ui/button";
-import { Dispatch, HTMLAttributes, SetStateAction } from "react";
+import { Dispatch, HTMLAttributes, SetStateAction, useTransition } from "react";
+import { upsertChallengeProgress } from "@/actions/challenge-progress";
+import { Challenge } from "@/type";
+import { toast } from "sonner";
+import { useAudio } from "react-use";
+import { reduceHearts } from "@/actions/user-progress";
+import { useHeartsModal } from "@/store/use-hearts-modal";
+import { useLessonActions } from "@/store/useLessonChallenge";
 
 type Props = {
-  questionList: SciencePlus.Question[];
-  questionState: SciencePlus.QuestionSructure;
+  questionList: SciencePlus.MultiChoiceQuestion[];
+  questionState: SciencePlus.MultiChoiceAnsSructure;
   title: string;
   customHeader?: React.ReactElement;
   questionUniqueId: string;
-  setQuestionState: Dispatch<SetStateAction<SciencePlus.QuestionSructure>>;
-  // handleSubmit: () => void;
-  // handleAnswerChange: (value: string) => void;
+  challenge?: Challenge;
+  setQuestionState: Dispatch<
+    SetStateAction<SciencePlus.MultiChoiceAnsSructure>
+  >;
 } & HTMLAttributes<HTMLDivElement>;
 
 const MultipleChoice = ({
@@ -24,8 +32,17 @@ const MultipleChoice = ({
   questionUniqueId,
   customHeader,
   className,
+  challenge,
   ...props
 }: Props) => {
+  const [pending, startTransition] = useTransition();
+  const [correctAudio, _c, correctControls] = useAudio({ src: "/correct.wav" });
+  const [incorrectAudio, _i, incorrectControls] = useAudio({
+    src: "/incorrect.wav",
+  });
+  const { open: openHeartsModal } = useHeartsModal();
+  const { reduceHeart } = useLessonActions();
+
   const handleAnsChange = (value: string) => {
     if (!questionState.isAnswered) {
       setQuestionState((qaVal) => ({ ...qaVal, value }));
@@ -39,6 +56,37 @@ const MultipleChoice = ({
         isAnswered: true,
         isCorrect: prev.correctAnswer == prev.value,
       }));
+      if (questionState.value == questionState.correctAnswer && challenge) {
+        void correctControls.play();
+        startTransition(() => {
+          upsertChallengeProgress(challenge.id)
+            .then((response) => {
+              console.log("response::", response);
+              // if (initialPercentage === 100) {
+              //   setHearts((prev) => Math.min(prev + 1, MAX_HEARTS));
+              // }
+            })
+            .catch(() =>
+              toast.error("Something went wrong. Please try again.")
+            );
+        });
+      }
+      if (questionState.value !== questionState.correctAnswer && challenge) {
+        void incorrectControls.play();
+        reduceHeart();
+        startTransition(() => {
+          reduceHearts(challenge.id)
+            .then((response) => {
+              if (response?.error === "hearts") {
+                openHeartsModal();
+                return;
+              }
+            })
+            .catch(() =>
+              toast.error("Something went wrong. Please try again.")
+            );
+        });
+      }
     }
   };
 
@@ -69,6 +117,8 @@ const MultipleChoice = ({
 
   return (
     <div className="rounded-md bg-gray-100 p-5 mt-14">
+      {incorrectAudio}
+      {correctAudio}
       {customHeader ? (
         customHeader
       ) : (
