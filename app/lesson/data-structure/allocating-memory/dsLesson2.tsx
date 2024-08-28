@@ -1,11 +1,10 @@
 "use client";
 
 import { HeaderProgress } from "@/components/atoms/common/headerProgress";
-import ArrayExplanation from "@/components/molecules/lessons/ds_course/ls1/arrayExplanation";
-import DSIntro from "@/components/molecules/lessons/ds_course/ls1/dsIntro";
-import Lesson1Review from "@/components/molecules/lessons/ds_course/ls1/ls1Review";
-import RecordExplanation from "@/components/molecules/lessons/ds_course/ls1/recordExplanation";
-import WhatIsDs from "@/components/molecules/lessons/ds_course/ls1/whatIsDs";
+import AllocatingMemoryIntro from "@/components/molecules/lessons/ds_course/ls2/allocatingMemoryIntro";
+import Ls2Review from "@/components/molecules/lessons/ds_course/ls2/ls2Review";
+import MemoryAddress from "@/components/molecules/lessons/ds_course/ls2/memoryAddress";
+import Pointer from "@/components/molecules/lessons/ds_course/ls2/pointers";
 import {
   useLessonActions,
   useLessonChallenge,
@@ -15,7 +14,9 @@ import { useEffect, useState } from "react";
 
 type LessonProps = LessonChallenge;
 
-const DSLesson1 = (props: LessonProps) => {
+const numberOfSection = 5;
+
+const AllocatingMemory = (props: LessonProps) => {
   const [progress, setProgress] = useState(1);
   const { setLessonChallenge } = useLessonActions();
   const { initialHearts } = useLessonChallenge();
@@ -23,7 +24,6 @@ const DSLesson1 = (props: LessonProps) => {
   useEffect(() => {
     if (props.initialLessonChallenges) {
       console.log("props::", props);
-
       setLessonChallenge(props);
     }
   }, [props, setLessonChallenge]);
@@ -34,7 +34,6 @@ const DSLesson1 = (props: LessonProps) => {
     window.scrollTo({ top: 0, behavior: "instant" });
   };
 
-  const numberOfSection = 5;
   return (
     <div>
       {initialHearts !== undefined && (
@@ -44,15 +43,15 @@ const DSLesson1 = (props: LessonProps) => {
           hasActiveSubscription={!!props.userSubscription?.isActive}
         />
       )}
+
       <div className="max-w-[560px] mx-auto mt-5">
-        {progress == 1 && <DSIntro handleClick={handleClick} />}
-        {progress == 2 && <WhatIsDs handleClick={handleClick} />}
-        {progress == 3 && <ArrayExplanation handleClick={handleClick} />}
-        {progress == 4 && <RecordExplanation handleClick={handleClick} />}
-        {progress == 5 && <Lesson1Review />}
+        {progress == 1 && <AllocatingMemoryIntro handleClick={handleClick} />}
+        {progress == 2 && <MemoryAddress handleClick={handleClick} />}
+        {progress == 3 && <Pointer handleClick={handleClick} />}
+        {progress == 4 && <Ls2Review />}
       </div>
     </div>
   );
 };
 
-export default DSLesson1;
+export default AllocatingMemory;

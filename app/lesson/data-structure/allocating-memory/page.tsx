@@ -1,37 +1,41 @@
-"use client";
+import { redirect, useRouter } from "next/navigation";
 
-import { HeaderProgress } from "@/components/atoms/common/headerProgress";
-import AllocatingMemoryIntro from "@/components/molecules/lessons/ds_course/ls2/allocatingMemoryIntro";
-import Ls2Review from "@/components/molecules/lessons/ds_course/ls2/ls2Review";
-import MemoryAddress from "@/components/molecules/lessons/ds_course/ls2/memoryAddress";
-import Pointer from "@/components/molecules/lessons/ds_course/ls2/pointers";
-import { useState } from "react";
+import {
+  getLesson,
+  getUserProgress,
+  getUserSubscription,
+  // getUserSubscription,
+} from "@/database/queries";
 
-const AllocatingMemory = () => {
-  const [progress, setProgress] = useState(1);
-  const numberOfSection = 5;
+import DSLesson2 from "./dsLesson2";
 
-  const handleClick = () => {
-    if (typeof window == "undefined") return;
-    setProgress(progress + 1);
-    window.scrollTo({ top: 0, behavior: "instant" });
+type Props = {
+  searchParams: {
+    id: number;
   };
+};
+
+const LessonPage = async ({ searchParams }: Props) => {
+  const lesson = await getLesson(searchParams.id);
+  const userProgress = await getUserProgress();
+  const userSubscription = await getUserSubscription();
+
+  if (!lesson || !userProgress) return redirect("/learn");
+
+  const initialPercentage =
+    (lesson.challenges.filter((challenge) => challenge.completed).length /
+      lesson.challenges.length) *
+    100;
 
   return (
-    <div>
-      <HeaderProgress
-        hearts={100}
-        percentage={progress * (100 / numberOfSection)}
-        hasActiveSubscription={false}
-      />
-      <div className="max-w-[560px] mx-auto mt-5">
-        {progress == 1 && <AllocatingMemoryIntro handleClick={handleClick} />}
-        {progress == 2 && <MemoryAddress handleClick={handleClick} />}
-        {progress == 3 && <Pointer handleClick={handleClick} />}
-        {progress == 4 && <Ls2Review />}
-      </div>
-    </div>
+    <DSLesson2
+      initialLessonId={lesson.id}
+      initialLessonChallenges={lesson.challenges}
+      initialHearts={userProgress.hearts}
+      initialPercentage={initialPercentage}
+      userSubscription={userSubscription}
+    />
   );
 };
 
-export default AllocatingMemory;
+export default LessonPage;

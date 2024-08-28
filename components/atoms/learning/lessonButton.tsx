@@ -48,7 +48,12 @@ export const LessonButton = ({
 
   return (
     <Link
-      href={"/lesson/" + lessonRoute}
+      href={{
+        pathname: "/lesson/" + lessonRoute,
+        query: {
+          id: id,
+        },
+      }}
       aria-disabled={locked}
       style={{ pointerEvents: locked ? "none" : "auto" }}
     >

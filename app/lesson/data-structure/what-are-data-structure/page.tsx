@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 import {
   getLesson,
@@ -9,8 +9,14 @@ import {
 
 import DSLesson1 from "./dsLesson1";
 
-const LessonPage = async () => {
-  const lesson = await getLesson();
+type Props = {
+  searchParams: {
+    id: number;
+  };
+};
+
+const LessonPage = async ({ searchParams }: Props) => {
+  const lesson = await getLesson(searchParams.id);
   const userProgress = await getUserProgress();
   const userSubscription = await getUserSubscription();
 

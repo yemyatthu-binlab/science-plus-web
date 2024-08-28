@@ -1,6 +1,6 @@
 "use client";
 
-import { InfinityIcon, X } from "lucide-react";
+import { InfinityIcon, Loader, X } from "lucide-react";
 import Image from "next/image";
 
 import { Progress } from "@/components/ui/progress";
@@ -8,7 +8,7 @@ import { useExitModal } from "@/store/use-exit-modal";
 import { useRouter } from "next/navigation";
 
 type HeaderProps = {
-  hearts: number;
+  hearts?: number;
   percentage: number;
   hasActiveSubscription: boolean;
 };
@@ -42,7 +42,9 @@ export const HeaderProgress = ({
             alt="Heart"
             className="mr-2"
           />
-          {hasActiveSubscription ? (
+          {hearts == undefined ? (
+            <Loader className="h-6 w-6 text-muted-foreground animate-spin" />
+          ) : hasActiveSubscription ? (
             <InfinityIcon className="h-6 w-6 shrink-0 stroke-[3]" />
           ) : (
             hearts

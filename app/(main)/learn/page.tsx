@@ -13,6 +13,7 @@ import {
   getUserSubscription,
 } from "@/database/queries";
 import { redirect } from "next/navigation";
+
 const LearningPage = async () => {
   const userPorgess = await getUserProgress();
   const units = await getUnits();
