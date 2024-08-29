@@ -28,7 +28,7 @@ const LearningPage = async () => {
   const isPro = !!userSubscription?.isActive;
 
   return (
-    <div className="flex flex-row-reverse gap-[49px] px-6">
+    <div className="flex flex-row-reverse gap-[49px] px-6 overflow-hidden">
       <StickyWrapper>
         <UserProgress
           activeCourse={userPorgess.activeCourse}
@@ -40,8 +40,8 @@ const LearningPage = async () => {
         <Quests points={userPorgess.points} />
       </StickyWrapper>
       <FeedWrapper>
-        <Header title={userPorgess.activeCourse.title} />
-        <div className="">
+        {/* <Header title={userPorgess.activeCourse.title} /> */}
+        <div className="mt-2 md:mt-20">
           {units.map((unit) => (
             <div key={unit.id} className="mb-10">
               <Unit

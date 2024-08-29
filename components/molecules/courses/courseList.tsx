@@ -29,7 +29,7 @@ export const CourseList = ({ courses, activCourseId }: props) => {
     });
   };
   return (
-    <div className="pt-6 grid grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(210px,1fr))] gap-4">
+    <div className="pt-6 grid gap-1 grid-cols-[repeat(auto-fill,minmax(150px,1fr))] md:gap-4">
       {courses.map((item) => (
         <CourseCard
           key={item.id}

@@ -17,11 +17,12 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import ThemeText from "./themeText";
 
 export default function DragAndDrop() {
   const [items, setItems] = useState({
-    root: ["1", "2", "3"],
-    container1: ["4", "5", "6"],
+    root: [""],
+    container1: ["1", "2", "3", "4", "5"],
   });
   const [activeId, setActiveId] = useState();
 
@@ -33,7 +34,7 @@ export default function DragAndDrop() {
   );
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row bg-gray-100 rounded-md p-7 mt-10 items-center justify-center">
       <DndContext
         // announcements={defaultAnnouncements}
         sensors={sensors}
@@ -42,9 +43,11 @@ export default function DragAndDrop() {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <Container id="root" items={items.root} />
-        <Container id="container1" items={items.container1} />
-        <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
+        <div className="flex flex-col">
+          <ContainerAns id="root" items={items.root} />
+          <ContainerQues id="container1" items={items.container1} />
+          <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
+        </div>
       </DndContext>
     </div>
   );
@@ -154,14 +157,7 @@ export default function DragAndDrop() {
   }
 }
 
-const containerStyle = {
-  background: "#dadada",
-  padding: 10,
-  margin: 10,
-  flex: 1,
-};
-
-export function Container(props: any) {
+export function ContainerAns(props: any) {
   const { id, items } = props;
 
   const { setNodeRef } = useDroppable({
@@ -174,7 +170,37 @@ export function Container(props: any) {
       items={items}
       strategy={verticalListSortingStrategy}
     >
-      <div ref={setNodeRef} style={containerStyle}>
+      <div
+        ref={setNodeRef}
+        className="min-h-[60px] p-3 w-[300px] border border-gray-400 rounded-md border-dashed"
+      >
+        {items.length == 0 && (
+          <ThemeText className="text-sm text-gray-400 text-center mt-[6px]">
+            Drag Here
+          </ThemeText>
+        )}
+        {items.map((id: any) => (
+          <SortableItem key={id} id={id} />
+        ))}
+      </div>
+    </SortableContext>
+  );
+}
+
+export function ContainerQues(props: any) {
+  const { id, items } = props;
+
+  const { setNodeRef } = useDroppable({
+    id,
+  });
+
+  return (
+    <SortableContext
+      id={id}
+      items={items}
+      strategy={verticalListSortingStrategy}
+    >
+      <div ref={setNodeRef} className="mt-3">
         {items.map((id: any) => (
           <SortableItem key={id} id={id} />
         ))}
@@ -193,25 +219,47 @@ export function SortableItem(props: any) {
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <div ref={setNodeRef} className="" {...attributes} {...listeners}>
       <Item id={props.id} />
     </div>
   );
 }
 
 export function Item(props: any) {
+  type ItemType = { [key: string]: React.ReactElement };
   const { id } = props;
 
-  const style = {
-    width: "100%",
-    height: 50,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    border: "1px solid black",
-    margin: "10px 0",
-    background: "white",
+  const mapper: ItemType = {
+    "1": (
+      <>
+        <b>Set</b> A <b>to</b> B
+      </>
+    ),
+    "2": (
+      <>
+        <b>Set</b> A <b>to</b> C
+      </>
+    ),
+    "3": (
+      <>
+        <b>Set</b> B <b>to</b> A
+      </>
+    ),
+    "4": (
+      <>
+        <b>Set</b> B <b>to</b> C
+      </>
+    ),
+    "5": (
+      <>
+        <b>Set</b> C <b>to</b> A
+      </>
+    ),
   };
 
-  return <div style={style}>{id}</div>;
+  return (
+    <div className="border border-b-4 border-black px-2 py-1 rounded-md my-3 w-[90px]">
+      {id && <ThemeText className="text-sm">{mapper[id as string]}</ThemeText>}
+    </div>
+  );
 }

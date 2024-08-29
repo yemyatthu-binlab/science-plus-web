@@ -24,7 +24,7 @@ const RecordExplanation = ({ handleClick: moveToNextSection }: Props) => {
     if (lessonSegment == 2) {
       setShowSectionSwitchBtn(quesBState.isAnswered);
     }
-  }, [quesAState, quesBState]);
+  }, [quesAState, quesBState, lessonSegment]);
 
   return (
     <div className="mx-5 pb-10">
