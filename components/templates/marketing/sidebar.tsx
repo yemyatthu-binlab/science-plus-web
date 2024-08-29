@@ -26,8 +26,8 @@ const Sidebar = ({ className }: Props) => {
           href="/leaderboard"
           iconSrc="/leaderboard.svg"
         />
-        <SidebarItem label="Reminder" href="/quests" iconSrc="/quests.svg" />
-        {/* <SidebarItem label="Shop" href="/shop" iconSrc="/shop.svg" /> */}
+        <SidebarItem label="Quests" href="/quests" iconSrc="/quests.svg" />
+        <SidebarItem label="Shop" href="/shop" iconSrc="/shop.svg" />
       </div>
       <div className="mb-3">
         <UserAuthStateButton />

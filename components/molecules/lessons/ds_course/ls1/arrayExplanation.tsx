@@ -61,7 +61,7 @@ const ArrayExplanation = ({ handleClick }: Props) => {
         value တွေကို တစ်နေရာထဲမှာ သိမ်းနိုင်လို့ပါ။
         <br />
         <br />
-        <br /> ဉပမာ - ကျောင်းသား 5 ယောက်ရဲ့ PE score တွေကို program လေးတစ်ခုနဲ့
+        <br /> ဥပမာ - ကျောင်းသား 5 ယောက်ရဲ့ PE score တွေကို program လေးတစ်ခုနဲ့
         သိမ်းထားပြီး လစဉ်တိုင်းမှာ update လုပ်မယ်ဆိုပါစို့။ ကျွန်တော်တို့ဟာ
         ကျောင်းသားတစ်ယောက်စီအတွက် variable တစ်ခု declare ပြီး variable 5 ခုနဲ့
         သီးခြားသိမ်းထားလို့ရပါတယ်။
@@ -94,7 +94,7 @@ const ArrayExplanation = ({ handleClick }: Props) => {
         <br />
         <br /> Dynamic Type Programming Language တွေဖြစ်ကြတဲ့ PHP, Javascript,
         Python စသည်တို့မှာတော့ size limit ကို ထည့်ပေးစရာမလိုပဲ array ကို
-        initialize လုပ်ပြီးတာနဲ့ ကြိုက်သလောက်ထည့်လို့ရမှာ ဖြစ်ပါတယ်။ကျွန်တော့
+        initialize လုပ်ပြီးတာနဲ့ ကြိုက်သလောက်ထည့်လို့ရမှာ ဖြစ်ပါတယ်။ကျွန်တော့်
         သင်ခန်းစာတွေရဲ့ code example တွေမှာတော့ Javascript ကို အဓိက
         အသုံးပြုသွားမှာဖြစ်ပါတယ်။
       </ThemeText>
@@ -116,11 +116,11 @@ const ArrayExplanation = ({ handleClick }: Props) => {
         သိမ်းထားတဲ့ diagram ဖြစ်ပြီး၊ diagram 2 ကတော့ array ထဲမှာရှိတဲ့ အဲ့
         value တွေရဲ့ location ဖြစ်ပါတယ်။ အပေါ်က 0,1,2,3,4 စတဲ့ နံပါတ်တွေဟာ Array
         ထဲမှာ သိမ်းထားတဲ့ value တွေရဲ့ အခန်းနံပါတ်ဖြစ်ပြီး index (အများကိန်း
-        indices) လို့ခေါ်ပါတယ်။ဒီ index တွေကို အသုံးပြုပြီး ကျွန်တော်တို့ဟာ
+        indices) လို့ခေါ်ပါတယ်။ ဒီ index တွေကို အသုံးပြုပြီး ကျွန်တော်တို့ဟာ
         Array ထဲက value တွေကို manipulate လုပ်တာဖြစ်ပါတယ်။
         <br />
         <br />
-        ဉပမာ - အပေါ်က PE score တွေသိမ်းထားတဲ့ array ရဲ့ variable name ကို A
+        ဥပမာ - အပေါ်က PE score တွေသိမ်းထားတဲ့ array ရဲ့ variable name ကို A
         လို့ပေးထားတယ်ဆိုပါစို့။ Array ထဲက 7 ဆိုတဲ့ value ကို လိုချင်ရင်{" "}
         <HighLightText title="A[0]" /> ဆိုပြီး ယူရမှာဖြစ်ပြီး 0 ဆိုတဲ့ value
         လိုချင်ရင် <HighLightText title="A[1]" /> ဆိုပြီး access
@@ -182,7 +182,7 @@ const ArrayExplanation = ({ handleClick }: Props) => {
             ကို ရွေးချယ်ရမှာဖြစ်ပါတယ်။
             <br />
             <br />
-            အထက်တွင်ဖော်ပြခဲ့သော ဉပမာမှာအရဆိုလျှင် ကျွန်တော်တို့ သိမ်းချင်တဲ့
+            အထက်တွင်ဖော်ပြခဲ့သော ဥပမာမှာအရဆိုလျှင် ကျွန်တော်တို့ သိမ်းချင်တဲ့
             data က student တွေရဲ့ PE score တွေဖြစ်ပြီး၊ ကျွန်တော်တို့ program က
             ကျောင်းသားတစ်ယောက်ချင်းစီရဲ့ monthly PE result တွေကို update
             လုပ်ချင်တာဖြစ်ပါတယ်။
@@ -191,7 +191,7 @@ const ArrayExplanation = ({ handleClick }: Props) => {
             သိမ်းချင်တဲ့ data ကလည်း ရမှတ် တစ်ခုတည်းဖြစ်ပြီး student တွေအတွက်လည်း
             roll no 1 student ရဲ့ data ကို{" "}
             <HighLightText title="Array index 0" />, roll 2 student ရဲ့ data ကို{" "}
-            <HighLightText title="Array index 1" /> ထဲ သိမ်း။အဲလိုနည်းဖြင့်
+            <HighLightText title="Array index 1" /> ထဲ သိမ်း။ အဲလိုနည်းဖြင့်
             ကျွန်တော်တို့ program အတွက် array data structure က
             အဆင်ပြေဆုံးဖြစ်သွားပါတယ်။
           </ThemeText>
@@ -212,11 +212,11 @@ const ArrayExplanation = ({ handleClick }: Props) => {
             ဒီအချက်တွေလိုမှာဖြစ်ပါတယ်။ စဆွဲတဲ့ အမှတ်ရဲ့ x coordinate, y
             coordinate၊ ဆုံးမှတ်ရဲ့ x coordinate, y coordinate၊
             ဆွဲလိုက်တဲ့မျဉ်းရဲ့အထူ stroke width၊ မျဉ်းအရောင် stroke color၊
-            အထဲကနောက်ခံ color စသည်ဖြင့် 2D convas တစ်ခုအတွက် data
+            အထဲကနောက်ခံ color စသည်ဖြင့် 2D canvas တစ်ခုအတွက် data
             တွေအများကြီးလိုမှာဖြစ်ပါတယ်။
             <br /> <br />
             ဆိုတော့ ကျွန်တော်တို့ရေးမည့် program ရဲ့ အဓိကရည်ရွယ်ချက်က user
-            screen ပေါ် လျှောက်ခြစ်ထားတဲ့ 2D convas တွေအားလုံးကို သိမ်းထားပြီး
+            screen ပေါ် လျှောက်ခြစ်ထားတဲ့ 2D canvas တွေအားလုံးကို သိမ်းထားပြီး
             user နောက်တစ်ကြိမ် ပြန်ဖွင့်တဲ့အခါ screen ပေါ်မှာ ဆွဲထားသမျှတွေကို
             ပြန်ပြချင်တာမျိုးဖြစ်ပါတယ်။ ဒီလို အခြေအနေမျိုးမှာ array data
             structure တစ်ခုထဲ သုံးရုံနဲ့ အဆင်မပြေလောက်တော့ဘူးဆိုတာ
@@ -233,8 +233,8 @@ const ArrayExplanation = ({ handleClick }: Props) => {
           <ThemeText className="mt-14">
             နောက်ထပ် problem တစ်ခုနဲ့တွေးကြည့်ကြရအောင်။ phone တွေမှာ default
             ပါတဲ့ contact application
-            လိုမျိုးတစ်ခုရေးတယ်ဆိုပါစို့။ကျွန်တော်တို့ရဲ့ အဓိက data ဖြစ်တဲ့
-            contact မှာ အနည်းဆုံး contact မှာ phone number ရယ် name ရယ်
+            လိုမျိုးတစ်ခုရေးတယ်ဆိုပါစို့။ ကျွန်တော်တို့ရဲ့ အဓိက data ဖြစ်တဲ့
+            contact မှာ အနည်းဆုံး phone number ရယ် name ရယ်
             လိုမှာဖြစ်ပါတယ်။
             <br />
             <br />
@@ -255,7 +255,7 @@ const ArrayExplanation = ({ handleClick }: Props) => {
             className="mt-10 mx-auto"
           />
           <ThemeText className="mt-10">
-            Name အတွက် array တစ်ခုနဲ့ Phone အတွက် array တစ်ခု သတ်မှတ်ပြီး၊ ဉပမာ
+            Name အတွက် array တစ်ခုနဲ့ Phone အတွက် array တစ်ခု သတ်မှတ်ပြီး၊ ဥပမာ
             - Ann&apos;s phone number လိုချင်လျှင် Ann ရဲ့ index ကိုရှာပြီး ထို
             index ရဲ့ phone array ထဲက Phone[index] နဲ့ သွားထုတ်လိုက်လျှင်
             Ann&apos;s phone number ကိုရပြီပဲဖြစ်ပါတယ်။
@@ -274,24 +274,24 @@ const ArrayExplanation = ({ handleClick }: Props) => {
                 ဒါဟာ phone number နဲ့ name နှစ်ခုထဲဆို အဆင်ပြေပင်မဲ့ တစ်ခြား
                 fields (email, profile image, zip code) တွေ ထပ်တိုးလာမည်ဆို
                 linear ထားရမဲ့ Array အရေအတွက်တွေများလာပြီး contact တစ်ခုရဲ့ data
-                ကို access လုပ်ဖို့နဲ့ ရှာဖို့အတွက် ရေးကမဲ့ lines of code
+                ကို access လုပ်ဖို့နဲ့ ရှာဖို့အတွက် ရေးကမည့် lines of code
                 လည်းများလာမှာဖြစ်ပြီး read လုပ်ရမည့် time လည်းများလွန်းတာကြောင့်
                 performance အရလည်း အဆင်ပြေမှာမဟုတ်ပါဘူး။
               </ThemeText>
               <ThemeText className="mt-5">
-                drawing ဉပမာမှာဟာလည်း ထိုနည်းတူပါပဲ။ Linear Array နဲ့ထားမယ်ဆို
+                drawing ဥပမာ မှာလည်း ထိုနည်းတူပါပဲ။ Linear Array နဲ့ထားမယ်ဆို
                 canvas 2D တစ်ခုအတွက် သုံးရမဲ့ Array အရေအတွက်ဟာ အများကြီး
                 ဖြစ်နေမှာဖြစ်ပါတယ်။ ဆိုတော့ ဒီ problem နှစ်ခုအတွက် Beginner
-                level မှာ အကောင်းဆုံးဖြစ်နိုင်မဲ့ data structure ဟာ
+                level မှာ အကောင်းဆုံးဖြစ်မဲ့ data structure ဟာ
                 ဘာများဖြစ်နိုင်မလဲ ?
                 <br />
                 <br />
                 အဖြေကတော့ ရှင်းပါတယ်။ Array အခန်းတစ်ခုထဲမှာ value တစ်ခုထဲ
                 မထည့်ဘဲ လိုတဲ့ data တွေ အားလုံး‌ပေါင်းထည့်လိုက်မှာ ဖြစ်ပါတယ်။
-                ဉပမာ - Arary ၏ တစ်ခန်းချင်းစီတိုင်းမှာ ( name, contact, email,
+                ဥပမာ - Arary ၏ တစ်ခန်းချင်းစီတိုင်းမှာ ( name, contact, email,
                 zip) စသည်ဖြင့် data အားလုံးကို ပေါင်းထည့်လိုက်မှာဖြစ်ပါတယ်။
                 Drawing problem အတွက်လည်း ထိုနည်းတူ (Start X, Start Y, End X,
-                End Y, Stroke Width, Stroke Color) စသဖြင့် အားလုံးကို
+                End Y, Stroke Width, Stroke Color) အားလုံးကို
                 တစ်ခန်းချင်းစီမှာ လိုက်ထည့်ရမှာဖြစ်ပါတယ်။ ထိုသို့ထည့်ဖို့အတွက်
                 ကျွန်တော်တို့ဟာ နောက် data structure တစ်ခုကို
                 သိထားဖို့လိုလာပါတယ်။ အဲ့တာဟာ Record ပဲဖြစ်ပါတယ်။

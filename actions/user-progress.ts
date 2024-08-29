@@ -32,7 +32,7 @@ export const upsertUserProgress = async (courseId: number) => {
   if (existingUserProgress) {
     await db.update(userProgress).set({
       activeCourseId: courseId,
-      userName: user.firstName || "User",
+      userName: user.username || user.firstName || user.id.slice(0, 10),
       userImageSrc: user.imageUrl || "/mascot.svg",
     });
 
