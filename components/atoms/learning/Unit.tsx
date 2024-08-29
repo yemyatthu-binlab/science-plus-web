@@ -28,7 +28,7 @@ export const Unit = ({
 }: UnitProps) => {
   return (
     <>
-      <UnitBanner title={title} description={description} />
+      {/* <UnitBanner title={title} description={description} /> */}
 
       <div className="relative flex flex-col items-center bg-[url('/lesson-path-bg-pattern.svg')] bg-center bg-repeat-y">
         {lessons.map((lesson, i) => {
@@ -41,6 +41,7 @@ export const Unit = ({
               id={lesson.id}
               lessonRoute={lesson.lessonRoute}
               index={i}
+              lessonTitle={lesson.title}
               totalCount={lessons.length - 1}
               current={isCurrent}
               locked={isLocked}

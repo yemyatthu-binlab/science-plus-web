@@ -17,13 +17,12 @@ const RecordInMemoryIntro = ({ handleClick }: Props) => {
         className="mx-auto"
       />
       <ThemeText variant={"title"} className="mt-14">
-        Allocating Memory
+        Record In Memory
       </ThemeText>
       <ThemeText className="mt-5">
         In this lesson, we&apos;ll investigate how data structures are stored in
         memory.
       </ThemeText>
-      <DragAndDrop />
       <SectionSwitchBtn
         title="Start lesson"
         className="relative mt-10"

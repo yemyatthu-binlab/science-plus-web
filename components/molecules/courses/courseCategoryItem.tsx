@@ -10,7 +10,7 @@ export const CourseCategoryItem = async ({ courseCategory }: props) => {
   const courses = await getCourses(courseCategory.id);
   const userProgress = await getUserProgress();
   return (
-    <div className="my-10">
+    <div className="mx-5 mb-10">
       <p className="font-bold text-xl">{courseCategory.title}</p>
       <CourseList
         courses={courses}
