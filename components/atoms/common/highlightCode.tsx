@@ -12,8 +12,10 @@ type Props = {
 const HighLightCode = ({ codeString, className }: Props) => {
   const myHtml = hljs.highlight(codeString, { language: "javascript" }).value;
   return (
-    <pre className={cn("p-3 rounded-md bg-black text-white", className)}>
-      <code dangerouslySetInnerHTML={{ __html: myHtml }} />
+    <pre className={cn("p-3 rounded-sm bg-black text-white", className)}>
+      <div className="overflow-scroll md:overflow-hidden">
+        <code dangerouslySetInnerHTML={{ __html: myHtml }} />
+      </div>
     </pre>
   );
 };
