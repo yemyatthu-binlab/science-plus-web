@@ -21,7 +21,7 @@ import ThemeText from "./themeText";
 
 export default function DragAndDrop() {
   const [items, setItems] = useState({
-    root: [],
+    root: [""],
     container1: ["1", "2", "3", "4", "5"],
   });
   const [activeId, setActiveId] = useState();
@@ -175,7 +175,9 @@ export function ContainerAns(props: any) {
         className="min-h-[60px] p-3 w-[300px] border border-gray-400 rounded-md border-dashed"
       >
         {items.length == 0 && (
-          <ThemeText className="text-sm text-gray-400 text-center mt-[6px]">Drag Here</ThemeText>
+          <ThemeText className="text-sm text-gray-400 text-center mt-[6px]">
+            Drag Here
+          </ThemeText>
         )}
         {items.map((id: any) => (
           <SortableItem key={id} id={id} />
