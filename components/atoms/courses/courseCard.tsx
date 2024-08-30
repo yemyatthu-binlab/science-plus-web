@@ -39,8 +39,8 @@ const CourseCard = ({
       </div> */}
         <div className="relative">
           {active && (
-            <div className="absolute right-[-18px] top-[-5px]">
-              <div className="rounded-md bg-green-600 flex items-center justify-center p-1.5">
+            <div className="absolute right-[-27px] top-[-5px]">
+              <div className="rounded-md bg-green-500 flex items-center justify-center p-1.5">
                 <Check className="text-white stroke-[4] h-2 w-2" />
               </div>
             </div>

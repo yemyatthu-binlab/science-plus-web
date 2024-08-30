@@ -8,6 +8,7 @@ const textVariants = cva("font-sans", {
       default: /* tw */ "text-black dark:text-white",
       textGrey: /* tw */ "text-slate-200 dark:text-patchwork-grey-400",
       title: /* tw */ "font-bold text-2xl",
+      code: "font-mono",
     },
     size: {
       default: /* tw */ "",
