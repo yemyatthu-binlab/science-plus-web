@@ -44,7 +44,7 @@ export const upsertUserProgress = async (courseId: number) => {
   await db.insert(userProgress).values({
     userId,
     activeCourseId: courseId,
-    userName: user.firstName || "User",
+    userName: user.username || user.firstName || user.id.slice(0, 10),
     userImageSrc: user.imageUrl || "/mascot.svg",
   });
 

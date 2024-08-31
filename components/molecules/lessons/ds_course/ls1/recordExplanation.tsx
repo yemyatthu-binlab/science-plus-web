@@ -1,3 +1,4 @@
+import HighLightCode from "@/components/atoms/common/highlightCode";
 import HighLightText from "@/components/atoms/common/highlightText";
 import MultipleChoice from "@/components/atoms/common/multipleChoice";
 import SectionSwitchBtn from "@/components/atoms/common/sectionSwitchBtn";
@@ -26,6 +27,16 @@ const RecordExplanation = ({ handleClick: moveToNextSection }: Props) => {
     }
   }, [quesAState, quesBState, lessonSegment]);
 
+  const codeString = `const recordEg = {
+    name: 'Ann',
+    phone: '555-1234',
+    relationship: 'friend',
+  };`;
+
+  const codeString1 =  `console.log(recordEg.name); //Ann`;
+
+  const codeString2 = `record.name = "Anna";`
+
   return (
     <div className="mx-5 pb-10">
       <ThemeText variant={"title"}>Records</ThemeText>
@@ -33,6 +44,7 @@ const RecordExplanation = ({ handleClick: moveToNextSection }: Props) => {
         Suppose that a contact list on a phone should include information about
         the name, phone, and relationship of each contact:
       </ThemeText>
+      <HighLightCode codeString={codeString2} />
       <Image
         src={"/record_explanation.png"}
         alt={"Array Explanation"}

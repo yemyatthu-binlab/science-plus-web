@@ -19,17 +19,9 @@ const LLMLesson1 = (props: LessonProps) => {
 
   useEffect(() => {
     if (props.initialLessonChallenges) {
-      console.log("props::", props);
-
       setLessonChallenge(props);
     }
   }, [props, setLessonChallenge]);
-
-  const handleClick = () => {
-    if (typeof window == "undefined") return;
-    setProgress(progress + 1);
-    window.scrollTo({ top: 0, behavior: "instant" });
-  };
 
   const numberOfSection = 1;
   return (
