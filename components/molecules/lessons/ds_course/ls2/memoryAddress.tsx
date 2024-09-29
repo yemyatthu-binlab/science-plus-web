@@ -28,26 +28,31 @@ const MemoryAddress = ({ handleClick }: Props) => {
         Memory Addresses
       </ThemeText>
       <ThemeText className="mt-5">
-        Your computer has a fixed amount of storage. Variables, records, and all
-        other data structures live in computer memory so they can be accessed
-        later.
+        အရင် သင်ခန်းစာမှာပြောသွား Array, Record အစရှိတဲ့ Data structure တွေ
+        အားလုံးဟာ computer ရဲ့ram အပေါ်မှာ program run နေစဉ်အတွင်း သီးသန့်
+        location address တစ်ခုစီဖြင့် တည်ရှိနေတာ ဖြစ်ပါတယ်။
       </ThemeText>
       <ThemeText className="mt-5">
-        How are data structures stored in computer memory?
+        computer memory ကို Unique location address
+        တစ်ခုစီရှိတဲ့အခန်းပေါင်းမြောက်များစွာ နဲ့ ဖွဲ့စည်းထား တဲ့နေရာတစ်ခုလို့
+        ရှုမြင်နိုင်ပါတယ်။
       </ThemeText>
-      <ThemeText className="mt-14">
-        We can think of computer memory as consisting of a sequence of numbered
-        locations.
+      <ThemeText className="mt-5">
+        ကျွန်တော်တို့ ရေးထားတဲ့ programကို run လိုက်ပီဆိုတာနဲ့ computer ဟာ code
+        ထဲမှာပါတဲ့ data structure တစ်ခုချင်းစီတိုင်းအတွက် ram ပေါ်က
+        လွတ်တဲ့အခန်းတစ်ခုချင်းစီမှာသွားသိမ်းထားပါတယ်။
       </ThemeText>
       <div className="rounded-md border border-slate-200 my-5 p-5">
         <ThemeText>
-          When we create a new data structure, the computer finds a spot and
-          tells us where the new data structure lives — we call that its address
-          in memory.
+          ဒီမှာ သတိပြုကမှာက code ရေးတဲ့အခါ ကျွန်တော်တို့ ကြေညာထားတဲ့
+          variable,function,class စသည်တို့ဟာလည်း ramအပေါ်မှာ address တစ်ခုစီနဲ့
+          တည်ရှိနေမှာ ဖြစ်ပါတယ်။
         </ThemeText>
       </div>
-      <ThemeText className="mt-14">
-        Here&apos;s a record containing contact information:
+      <ThemeText className="mt-5">
+        အောက်က diagram ဟာ contract information တွေပါတဲ့ record တစ်ခုကို{" "}
+        <HighLightText title="theContract" /> ဆိုတဲ့ variable ထဲမှာ သိမ်းထားတဲ့
+        ပုံစံဖြစ်ပါတယ်။
       </ThemeText>
       <Image
         src={"/allocating_memory_2.png"}
@@ -57,7 +62,7 @@ const MemoryAddress = ({ handleClick }: Props) => {
         className="mx-auto my-10"
       />
       <ThemeText className="mb-5">
-        What address is this record stored at?
+        ဆိုတော့အဲ့ record ဟာ ram ပေါ်ကဘယ် location address မှာတည်ရှိနေတာပါလဲ။
       </ThemeText>
       <ChoiceSelectionBox
         className="mb-14 grid-cols-1"
@@ -67,11 +72,13 @@ const MemoryAddress = ({ handleClick }: Props) => {
           "1234",
           "We can't tell",
         ]}
-        correctAnswer={1}
+        correctAnswer={[1]}
       />
       <ThemeText className="mb-5">
-        According to the diagram, 7801 represents the address where the record
-        is stored.
+        ပုံအရ contract informationတွေပါတဲ့ အဆိုပါ record ဟာ ramရဲ့ 7801
+        ဆိုတဲ့အခန်းမှာ တည်ရှိနေတာဖြစ်ပါတယ်။ theContract ဆိုတဲ့ variable ဟာ
+        runtime မှာ record data structure ရဲ့ value တွေကိုသိမ်းထားတာမဟုတ်ပဲ
+        record datastructure ရဲ့ value တည်ရှိတဲ့ memory address ကိုသိမ်းထားတာပါ။
       </ThemeText>
       <ThemeText>
         The variable <HighLightText title="theContact" /> does not contain our

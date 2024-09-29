@@ -132,7 +132,7 @@ const LLMIntro = () => {
                   "They have been manually programmed with common sentences.",
                   "They use probability.",
                 ]}
-                correctAnswer={2}
+                correctAnswer={[2]}
               />
               <ThemeText>That&apos;s right!</ThemeText>
               <ThemeText className="mt-5">
