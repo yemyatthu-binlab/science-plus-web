@@ -215,7 +215,7 @@ const Pointer = ({ handleClick: moveToNextSection }: Props) => {
                 }
                 setQuestionState={setQuesDState}
                 challenge={challenges?.[4]}
-                questionUniqueId="#memoryAddressQA3"
+                questionUniqueId="#memoryAddressQA4"
               />
               {quesDState.isAnswered && (
                 <ThemeText className="mt-5">

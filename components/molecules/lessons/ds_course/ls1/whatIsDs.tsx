@@ -48,7 +48,7 @@ const WhatIsDs = ({ handleClick }: Props) => {
           "၁၀၀စက္ကန့်လောက်",
           "တစ်နာရီလောက်",
         ]}
-        correctAnswer={3}
+        correctAnswer={[3]}
       />
       <ThemeText className="mt-2 mb-14">
         သင့် computer က တစ်စက္ကန့်ကို file 500 နှုန်းနဲ့ read နိုင်ပါတယ်။ file

@@ -4,7 +4,7 @@ import { HTMLProps, useState } from "react";
 
 type Props = {
   strList: string[];
-  correctAnswer: number;
+  correctAnswer: number[];
 } & HTMLProps<HTMLDivElement>;
 
 const ChoiceSelectionBox = ({ strList, correctAnswer, ...props }: Props) => {
@@ -20,7 +20,7 @@ const ChoiceSelectionBox = ({ strList, correctAnswer, ...props }: Props) => {
             }}
             className={cn(
               selectedState == idx + 1 &&
-                (selectedState == correctAnswer
+                (correctAnswer.includes(selectedState)
                   ? "border-green-400 bg-green-50 hover:bg-green-100"
                   : "border-red-500 bg-red-50 hover:bg-red-100")
             )}

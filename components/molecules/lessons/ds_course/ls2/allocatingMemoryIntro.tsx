@@ -19,8 +19,8 @@ const AllocatingMemoryIntro = ({ handleClick }: Props) => {
         Allocating Memory
       </ThemeText>
       <ThemeText className="mt-5">
-        In this lesson, we&apos;ll investigate how data structures are stored in
-        memory.
+        ဒီသင်ခန်းစာမှာတော့ data structure တွေ memory ပေါ်မှာ
+        နေရာဘယ်လိုယူလဲဆိုတာ ရှင်းပြသွားမှာ ဖြစ်ပါတယ်။
       </ThemeText>
       <SectionSwitchBtn
         title="Start lesson"

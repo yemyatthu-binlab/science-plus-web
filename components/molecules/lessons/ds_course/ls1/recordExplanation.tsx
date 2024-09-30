@@ -33,18 +33,34 @@ const RecordExplanation = ({ handleClick: moveToNextSection }: Props) => {
     relationship: 'friend',
   };`;
 
-  const codeString1 =  `console.log(recordEg.name); //Ann`;
+  const codeString1 = `console.log(recordEg.name); //Ann`;
 
-  const codeString2 = `record.name = "Anna";`
+  const codeString2 = `console.log(recordEg["name"]) //Ann;
+console.log(recordEg.phone) //555-1234;
+recordEg.name = "Bea";
+console.log(recordEg.name) //Bea`;
 
   return (
     <div className="mx-5 pb-10">
       <ThemeText variant={"title"}>Records</ThemeText>
       <ThemeText className="my-5">
-        Suppose that a contact list on a phone should include information about
-        the name, phone, and relationship of each contact:
+        အဲ့တော့ ကျွန်တော်တို့က name, phone,relation 3 ခုပါတဲ့ record တစ်ခုအရင်
+        create ပီး အဲ့လို record တစ်ခုချင်းစီကို array
+        ခန်းတစ်ခန်းချင်းစီမှာသိမ်းထားမှာဖြစ်ပါတယ်။
       </ThemeText>
-      <HighLightCode codeString={codeString2} />
+      <HighLightCode codeString={codeString} />
+      <ThemeText className="my-5">
+        ဒါဟာ JS မှာ name, phone, relationship field 3 ခုပါတဲ့ record တစ်ခု
+        create တဲ့နည်းဖြစ်ပါတယ်။ record data structure ကို JS မှာ object
+        လို့ခေါ်ပီး အချို့သော Language တွေမှာ Dictionary လို့ခေါ်ကြပါတယ်။
+        အဲ့လို့ <HighLightText title="name : Annn" /> ,{" "}
+        <HighLightText title="phone : 555-124" />
+        တို့လို key value pair တစ်ခုချင်းစီကို field လို့ခေါ်ပါတယ်။ Arrayခန်း
+        တစ်ခန်းချင်းစီက Value ကိုလိုချင်ရင် array ရဲ့ indexကိုသုံးပီးထုတ်ကသလို
+        recordထဲမှာ field တစ်ခုချင်းစီရဲ့ value ကိုတော့အဲ့ fieldရဲ့ key
+        ကိုသုံးပီး ထုတ်ကမှာ ဖြစ်ပါတယ်။
+      </ThemeText>
+      <HighLightCode className="my-5" codeString={codeString2} />
       <Image
         src={"/record_explanation.png"}
         alt={"Array Explanation"}
@@ -53,15 +69,12 @@ const RecordExplanation = ({ handleClick: moveToNextSection }: Props) => {
       />
       <div className="border border-slate-200 rounded-md p-6 mt-5">
         <ThemeText className="text-sm">
-          A <b>record</b> is a way of grouping pieces of information, or{" "}
-          <b>fields</b>, together.
+          record ဟာ field လို့ခေါ်တဲ့ key value pair တွေအများကြီးကို စုပီး
+          သိမ်းလို့ရတဲ့ data structure တစ်ခု ဖြစ်ပါတယ်။
         </ThemeText>
       </div>
-      <ThemeText className="mt-5">
-        The record <HighLightText title="Contact" /> contains fields{" "}
-        <HighLightText title="name" /> ,
-        <HighLightText title="phone" /> , and{" "}
-        <HighLightText title="relationship" />
+      <ThemeText className="mt-10">
+        အောက်ပုံဟာ name, phone, relation field 3 ခုစီပါတဲ့ record 3 ခုပါ။
       </ThemeText>
       <Image
         src={"/course-record_explanation2.png"}
@@ -73,7 +86,7 @@ const RecordExplanation = ({ handleClick: moveToNextSection }: Props) => {
       <MultipleChoice
         questionList={questionA}
         questionState={quesAState}
-        title="What's Bea's relationship in this contact list?"
+        title="အဲ့တော့ record 3 ခုထဲက Bea ရဲ့ relationship value က ဘာပါလဲ။"
         setQuestionState={setQuesAState}
         questionUniqueId="#recordQA1"
         challenge={challenges?.[2]}
@@ -81,8 +94,9 @@ const RecordExplanation = ({ handleClick: moveToNextSection }: Props) => {
       {lessonSegment >= 2 && (
         <>
           <ThemeText className="mt-10">
-            Consider another program that creates drawings based on information
-            about a circle to be drawn on a grid:
+            အပေါ်က drawing program မှာ circle canvas တစ်ခုဆွဲမယ်ဆိုပါစို့။
+            အဲ့တော့ circle အတွက််််် record တစ်ခု createပီး၊ လိုအပ်တဲ့
+            Valueတွေကို record ရဲ့ field တစ်ခုချင်းစီမှာသိမ်းမှာဖြစ်ပါတယ်။
           </ThemeText>
 
           <Image
@@ -92,30 +106,15 @@ const RecordExplanation = ({ handleClick: moveToNextSection }: Props) => {
             width={"540"}
             className="mt-5"
           />
-          <ThemeText className="mt-3">
-            We want to create a record to represent a{" "}
-            <span className="bg-gray-200 p-1 text-sm rounded-sm py-1 px-2 leading-7 ">
-              Circle
-            </span>
-            .
-          </ThemeText>
 
           <MultipleChoice
             questionList={questionB}
             questionState={quesBState}
-            title="Which of these could not be a field of the record Circle?"
+            title="အဲ့တော့အောက်က value တွေထဲမှာ circle record ထဲမပါနိုင်တဲ့ field name ကဘာဖြစ်နိုင်ပါသလဲ။"
             setQuestionState={setQuesBState}
             questionUniqueId="#recordQA2"
             challenge={challenges?.[3]}
           />
-
-          {quesBState.isAnswered && (
-            <ThemeText className="mt-10">
-              We&apos;ve seen how records can store data in different contexts.
-              To organize and manipulate records, we&apos;ll need to investigate
-              how they&apos;re stored in computer memory.
-            </ThemeText>
-          )}
         </>
       )}
       {showSectionSwitchBtn && (
@@ -163,7 +162,7 @@ const questionB: SciencePlus.MultiChoiceQuestion[] = [
     value: "location",
   },
   {
-    label: "Total number of points",
+    label: "Phone Number",
     value: "points",
   },
   {

@@ -12,6 +12,7 @@ import { reduceHearts } from "@/actions/user-progress";
 import { useHeartsModal } from "@/store/use-hearts-modal";
 import { useLessonActions } from "@/store/useLessonChallenge";
 import useAnswerSubmit from "@/hook/custom/useAnswerSubmit";
+import { Ban, Check, CircleX, Cross, PartyPopper } from "lucide-react";
 
 type Props = {
   questionList: SciencePlus.MultiChoiceQuestion[];
@@ -113,7 +114,7 @@ const MultipleChoice = ({
         {questionList.map((item, idx) => (
           <div
             className={cn(
-              "flex items-center space-x-2 p-3",
+              "flex items-center space-x-2 px-3",
               addExtraStyleForRadio(item.value)
             )}
             key={idx}
@@ -129,7 +130,20 @@ const MultipleChoice = ({
               value={item.value}
               id={questionUniqueId + idx}
             />
-            <label htmlFor={questionUniqueId + idx}>{item.label}</label>
+            <label className="p-3 flex-1" htmlFor={questionUniqueId + idx}>{item.label}</label>
+            {questionState.isAnswered &&
+              !questionState.isCorrect &&
+              questionState.value === item.value && (
+                <div className="flex justify-end">
+                  <CircleX className="w-5 h-5 text-red-500" />
+                </div>
+              )}
+            {questionState.isAnswered &&
+              questionState.correctAnswer === item.value && (
+                <div className="flex justify-end">
+                  <Check className="w-5 h-5 text-green-500" />
+                </div>
+              )}
           </div>
         ))}
       </RadioGroup>
@@ -142,6 +156,22 @@ const MultipleChoice = ({
         >
           Submit
         </Button>
+      )}
+      {questionState.isAnswered && questionState.isCorrect && (
+        <div className="flex flex-row items-center mt-3">
+          <div className="bg-green-500 rounded-full h-10 w-10 items-center flex justify-center ">
+            <PartyPopper className="h-5 w-5 text-white" />
+          </div>
+          <ThemeText className="text-green-500 ml-2">Correct</ThemeText>
+        </div>
+      )}
+      {questionState.isAnswered && !questionState.isCorrect && (
+        <div className="flex flex-row items-center mt-5">
+          <div className="bg-red-500 rounded-full h-8 w-8 items-center flex justify-center ">
+            <Ban className="h-5 w-5 text-white" />
+          </div>
+          <ThemeText className="text-red-500 ml-2">Incorrect</ThemeText>
+        </div>
       )}
     </div>
   );

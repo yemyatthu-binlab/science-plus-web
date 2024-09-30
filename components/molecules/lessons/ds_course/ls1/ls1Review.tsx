@@ -17,13 +17,20 @@ const Lesson1Review = () => {
         Review and Reflect
       </ThemeText>
       <ThemeText className="mt-5">
-        Computers collect, organize, access, and manipulate data with data
-        structures. Arrays and records are two types of data structures.
+        ဒီသင်ခန်းစာမှာ data structure ဆိုတာ ဘာလဲရယ် basic data structure
+        တွေဖြစ်ကြတဲ့ array၊ record တို့အကြောင်းအကြမ်းဖျင်း
+        ရှင်းပြသွားတာဖြစ်ပါတယ်။
       </ThemeText>
       <ThemeText className="mt-5 mb-10">
-        Next, we&apos;ll investigate how computers store data structures in memory.
+        နောက်သင်ခန်းစာမှာတော့ array တို့ record တို့ memory ပေါ်မှာ
+        ဘယ်လိုနေရာယူလဲဆိုတာ ဆက်လက်ရှင်းသွားမှာဖြစ်ပါတယ်။
       </ThemeText>
-      <SectionSwitchBtn title="Finish lesson" handleClick={() => {router.push("/learn")}} />
+      <SectionSwitchBtn
+        title="Finish lesson"
+        handleClick={() => {
+          router.push("/learn");
+        }}
+      />
     </div>
   );
 };

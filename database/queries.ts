@@ -33,14 +33,15 @@ export const getCourseCategories = cache(async () => {
 });
 
 export const getUserProgress = cache(async () => {
-  const { userId } = await auth();
-  if (!userId) {
-    return null;
-  }
+  const { userId } = auth();
+
+  if (!userId) return null;
 
   const data = await db.query.userProgress.findFirst({
     where: eq(userProgress.userId, userId),
-    with: { activeCourse: true },
+    with: {
+      activeCourse: true,
+    },
   });
 
   return data;
